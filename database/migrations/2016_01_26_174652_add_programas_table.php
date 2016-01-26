@@ -32,7 +32,12 @@ class AddProgramasTable extends Migration
 
             $table->timestamps();
         });
-        
+        Schema::create('conductor_programa', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('conductor_id')->unsigned();
+            $table->integer('programa_id')->unsigned();
+            $table->timestamps();
+        });
     }
 
     /**

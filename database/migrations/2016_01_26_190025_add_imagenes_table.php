@@ -19,6 +19,21 @@ class AddImagenesTable extends Migration
             $table->string('metatags');
             $table->timestamps();
         });
+
+        // tabla pivote para ConductorImagen
+        Schema::create('conductor_imagen', function (Blueprint $table){
+            $table->increments('id');
+            $table->integer('conductor_id')->unsigned();
+            $table->integer('imagen_id')->unsigned();
+            $table->timestamps();
+        });
+        // tabla pivote para ProductorImagen
+        Schema::create('productor_imagen',function (Blueprint $table){
+            $table->increments('id');
+            $table->integer('productor_id')->unsigned();
+            $table->integer('imagen_id')->unsigned();
+            $table->timestamps();
+        });
     }
 
     /**
