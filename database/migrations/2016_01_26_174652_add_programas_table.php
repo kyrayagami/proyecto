@@ -18,7 +18,7 @@ class AddProgramasTable extends Migration
             $table->string('estatus');
             $table->string('descripcion');
             $table->string('logo');
-            $table->string('img_programa_anterior');
+            $table->string('img_tema');
             $table->string('img_slider');
             $table->string('descripcion_slider',60);
             $table->text('historia');
