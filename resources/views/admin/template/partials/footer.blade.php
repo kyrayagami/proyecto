@@ -1,7 +1,7 @@
-  <footer class="main-footer">
+<footer class="main-footer">
     <div class="pull-right hidden-xs">
       <b>Version</b> 2.3.2
     </div>
-    <strong>Copyright &copy; 2014-2015</strong> All rights
+    <strong>Copyright &copy; 2014-2016</strong> All rights
     reserved.
-  </footer>
+</footer>
