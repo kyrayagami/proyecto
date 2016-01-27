@@ -88,3 +88,4 @@
       <h1 align="center">Bienvenido al Administrador de horarios  Canal 10</h1>
     </section>
   </div>
+</div>
