@@ -8,11 +8,11 @@
 	<link rel="stylesheet" href="{{asset('plugins/trumbowyg/ui/trumbowyg.css')}}">
 
 	<!--inicio externos-->
-	<link rel="stylesheet" href="{{asset('plugins/bootstrap_admin/css/bootstrap.min.css')}}">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+	<link rel="stylesheet" href="{{asset('plugins/bootstrap_admin/css/bootstrap.min.css')}}">
 	<link rel="stylesheet" href="{{asset('plugins/dist_admin/css/AdminLTE.min.css')}}">	 		
-	<link rel="stylesheet" href="{{asset('plugins/dist_admin/css/skins/_all-skins.min.css')}}">  
 	<link rel="stylesheet" href="{{asset('plugins/dist_admin/css/skins/_all-skins.min.css')}}">
 	<link rel="stylesheet" href="{{asset('plugins/plugins_admin/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}">
 	<link rel="stylesheet" href="{{asset('plugins/dist_admin/css/jquery-ui-1.10.3.custom/jquery-ui-1.10.3.custom/css/no-theme/jquery-ui-1.10.3.custom.min.css')}}">
@@ -21,11 +21,12 @@
 </head>
 <body>
 	@include('admin.template.partials.nav')
-
+	@include('admin.template.partials.menu')
 	<section>
 		@yield('content')
 	</section>
 	
+	@include('admin.template.partials.footer')
 
 	<script src="{{asset('plugins/jquery/js/jquery-2.1.4.js')}}"></script>
 	<script src="{{asset('plugins/bootstrap/js/bootstrap.js')}}" ></script>
