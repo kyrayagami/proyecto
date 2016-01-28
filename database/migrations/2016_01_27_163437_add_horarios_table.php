@@ -12,15 +12,15 @@ class AddHorariosTable extends Migration
      */
     public function up()
     {
-         Schema::create('horarios', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('horarios', function (Blueprint $table) {
+            $table->increments('id');            
             $table->integer('dia_id')->unsigned();
             $table->integer('programa_id')->unsigned();
             $table->time('hora_inicio');
             $table->time('hora_termino');
             $table->text('tipo');
-            $table->text('descripcion');
-            $table->text('imagen');
+            $table->text('descripcion');            
+            $table->text('tipo_audiencia');
             $table->foreign('dia_id')->references('id')->on('dias');
             $table->foreign('programa_id')->references('id_programa')->on('programas');
             $table->timestamps();

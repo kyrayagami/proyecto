@@ -16,20 +16,18 @@ class AddProgramasTable extends Migration
             $table->increments('id_programa');
             $table->string('nombre');            
             $table->string('estatus');
-            $table->string('descripcion');
+            $table->string('descripcion_breve');
             $table->string('logo');
-            $table->string('img_tema');
+            $table->string('img_programa');
+            $table->string('img_app');
             $table->string('img_slider');
-            $table->string('descripcion_slider',60);
-            $table->text('historia');
+            $table->string('slogan_slider');
+            $table->text('sipnosis');            
             $table->integer('categoria_id')->unsigned();
-            $table->integer('productor_id')->unsigned();
-            $table->integer('conductor_id')->unsigned();
+            $table->integer('productor_id')->unsigned();            
 
             $table->foreign('categoria_id')->references('id_categoria')->on('categorias');
-            $table->foreign('productor_id')->references('id_productor')->on('productores');
-            $table->foreign('conductor_id')->references('id_conductor')->on('conductores');
-
+            $table->foreign('productor_id')->references('id_productor')->on('productores');                        
             $table->timestamps();
         });
         Schema::create('conductor_programa', function (Blueprint $table) {

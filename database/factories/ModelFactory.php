@@ -1,5 +1,6 @@
 <?php
 
+use Faker\Generator;	
 /*
 |--------------------------------------------------------------------------
 | Model Factories
@@ -10,12 +11,12 @@
 | database. Just tell the factory how a default model should look.
 |
 */
-
-$factory->define(App\User::class, function (Faker\Generator $faker) {
-    return [
-        'name' => $faker->name,
-        'email' => $faker->email,
-        'password' => bcrypt(str_random(10)),
-        'remember_token' => str_random(10),
-    ];
+$factory->define(App\Productor::class, function(Generator $faker){
+	$array = [
+	'nombre' => $faker->name,
+        'correo' => $faker->email,
+        'perfil' => $faker->text,
+        'imagen_url' => $faker->url
+	];
+	return $array;
 });
