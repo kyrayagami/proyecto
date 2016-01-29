@@ -1,10 +1,8 @@
 @extends('admin.template.main')
 
-@section('title', 'Prueba')
-
 @section('content')
 
-    <section class="content">
+  <section class="content">
       <div class="row">
         <!-- left column -->
         <div class="col-md-6">

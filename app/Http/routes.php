@@ -57,7 +57,7 @@ Route::group(['prefix'=> 'admin'], function(){
 		'uses' 	=> 'HorariosController@destroy',
 		'as'	=> 'admin.horarios.destroy'
 		]);
-	Route::resource('tasg', 'TagsController');
+	Route::resource('tags', 'TagsController');
 	Route::get('tags/{id}/destroy',[
 		'uses' 	=> 'TagsController@destroy',
 		'as'	=> 'admin.tags.destroy'

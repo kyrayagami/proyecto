@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
@@ -18,22 +18,14 @@
 
 </head>
 
-<body>	
+<body class="hold-transition skin-blue sidebar-mini">
+	<div class="wrapper">
+  
+		@include('admin.template.partials.nav')
+		@include('admin.template.partials.menu')	
+		@include('admin.template.partials.footer')
 
-	@include('admin.template.partials.nav')
-	@include('admin.template.partials.menu')
-	
-	<section class="section-admin">
-		<div class="panel panel-default">
-			<div class="panel-body">
-					@yield('content')
-			</div>
-		</div>
-	</section>
-
-	
-	@include('admin.template.partials.footer')
-	
+	</div>
 
 	<script src="{{asset('plugins/jquery/js/jquery-2.1.4.js')}}"></script>
 	<script src="{{asset('plugins/bootstrap/js/bootstrap.js')}}" ></script>
@@ -47,8 +39,10 @@
 	<script src="{{asset('plugins/plugins_admin/fastclick/fastclick.js')}} "></script>
 	<script src="{{asset('plugins/dist_admin/js/app.min.js')}} "></script>
 	<!--fin externos-->
-	@yield('js')
 
+	<!--este llama al pluginchoosen no ingresado aun-->
+	@yield('js')
+	<!--termina-->
 </body>
 
 </html>

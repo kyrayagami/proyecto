@@ -80,5 +80,8 @@
   </section>      
   <section class="content">
     <h1 align="center">Bienvenido al Administrador de horarios  Canal 10</h1>
+    <!--llama al contenido para ingresar informacion-->
+    @yield('content')
+    <!--finaliza-->
   </section>
 </div>
