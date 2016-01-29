@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\ProgramasRequest;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -21,4 +22,21 @@ class ProgramasController extends Controller
     {
     	return view('admin.programas.create');
     }
+    public function store(ProgramasRequest $request)
+    {
+    	
+    }
+    public function edit($id)
+    {
+
+    }    
+    public function update(Request $request,$id)
+    {
+
+    }
+    public function destroy($id)
+    {
+    	
+    }
+
 }

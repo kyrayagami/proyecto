@@ -24,7 +24,7 @@ class HorarioRequest extends Request
     public function rules()
     {
         return [
-            //
+            
         ];
     }
 }

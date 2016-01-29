@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class TagRequest extends Request
+class TagsRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class TagRequest extends Request
     public function rules()
     {
         return [
-            //
+            'nombre' => 'max:60|required|uniqued:tags',
         ];
     }
 }

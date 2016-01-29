@@ -1,10 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Eloquent\Model;
-use App\Conductor;
 
-class ConductorSeeder extends Seeder
+class UsuarioSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,6 +11,6 @@ class ConductorSeeder extends Seeder
      */
     public function run()
     {
-        factory(Conductor::class,10)->create();
+        //
     }
 }

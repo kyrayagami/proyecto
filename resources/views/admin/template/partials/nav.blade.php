@@ -2,7 +2,7 @@
   <div class="wrapper">
     <header class="main-header">
       <a href="#" class="logo">
-        <span class="logo-mini"><b>A</b>10</span>
+        <span class="logo-mini"><b>A</b>C10</span>
         <span class="logo-lg"><b>Admin</b>C10</span>
       </a>
       <nav class="navbar navbar-static-top" role="navigation">

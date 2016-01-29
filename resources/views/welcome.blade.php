@@ -1,6 +1,6 @@
 @extends('admin.template.main')
 
-@section('title', 'Prueba')
+@section('title', 'Bienvenido al Administrador de horarios  Canal 10')
 
 @section('content')
    

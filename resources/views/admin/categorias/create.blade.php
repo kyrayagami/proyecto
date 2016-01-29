@@ -2,6 +2,8 @@
 
 @section('content')
 
+@section('title',' Crear nueva Categoria')
+
 <section class="content">
   <div class="row">
     <div class="col-md-6">

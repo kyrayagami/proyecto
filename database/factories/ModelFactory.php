@@ -13,7 +13,17 @@ use Faker\Generator;
 */
 $factory->define(App\Productor::class, function(Generator $faker){
 	$array = [
-	'nombre' => $faker->name,
+		'nombre' => $faker->name,
+        'correo' => $faker->email,
+        'perfil' => $faker->text,
+        'imagen_url' => $faker->url
+	];
+	return $array;
+});
+
+$factory->define(App\Conductor::class, function(Generator $faker){
+	$array = [
+		'nombre' => $faker->name,
         'correo' => $faker->email,
         'perfil' => $faker->text,
         'imagen_url' => $faker->url

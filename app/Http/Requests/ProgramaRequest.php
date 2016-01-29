@@ -24,7 +24,10 @@ class ProgramaRequest extends Request
     public function rules()
     {
         return [
-            //
+            'nombre' => 'min:3|required|uniqued:programas',            
+            'estatus'=> 'required',
+            'descripcion_breve' => 'min:15',                    
+            'sipnosis' => 'required',           
         ];
     }
 }

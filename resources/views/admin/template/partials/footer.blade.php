@@ -1,7 +1,7 @@
-<footer class="main-footer">
+<footer class="main-footer" position="fixed">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 2.3.2
+      <b>Version</b> 2.0
     </div>
-    <strong>Copyright &copy; 2014-2016</strong> All rights
+    <strong>Copyright &copy; {{date('Y')}}</strong> All rights
     reserved.
 </footer>
