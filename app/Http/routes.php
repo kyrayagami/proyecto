@@ -15,6 +15,26 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::group(['prefix' => 'admin'], function(){
+	
+	Route::resource('categorias','CategoriasController');
+
+	Route::resource('conductores','ConductoresController');
+
+	Route::resource('dias','DiasController');
+
+	Route::resource('horarios','HorariosController');
+
+	Route::resource('productores','ProductoresController');
+
+	Route::resource('programas','ProgramasController');
+
+	Route::resource('tags','TagsControlles');
+
+
+
+});
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
