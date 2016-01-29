@@ -11,7 +11,7 @@
       <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
         <li>
-          <a id="btn_adm_horario" href="#">
+          <a id="#" href="#">
             <i class="fa fa-circle-o"></i> 
             <span>Administrar Horarios</span>
           </a>
@@ -23,43 +23,43 @@
           </a>
         </li>       
         <li>
-          <a id="btn_categoria" href="#"> 
+          <a id="#" href="{{route('admin.categorias.index')}}"> 
             <i class="fa fa-reddit-square"></i>
             <span>Categoria</span>          
           </a>
         </li>
         <li>
-          <a id="btn_conductor" href="#"> 
+          <a id="#" href="{{route('admin.conductores.index')}}"> 
             <i class="fa fa-fw fa-user-plus"></i>
             <span>Conductor</span>          
           </a>
         </li>
         <li>
-          <a id="btn_productor" href="#"> 
+          <a id="#" href="{{route('admin.productores.index')}}"> 
             <i class="fa fa-user"></i>
             <span>Productor</span>          
           </a>
         </li>
         <li>
-          <a id="btn_programa" href="#"> 
+          <a id="#" href="{{route('admin.programas.index')}}"> 
             <i class="fa fa-fw fa-file-movie-o"></i>
             <span>Programa</span>          
           </a>
         </li>
         <li>         
-          <a id="btn_galeria_vista" href="#{" target="_blank">
+          <a id="#" href="#">
             <i class="fa fa-fw fa-file-archive-o"></i> 
             <span>Reporte Horarios</span>
           </a>
         </li>  
         <li>         
-          <a id="prueba_de_horario" href="#">
+          <a id="#" href="{{route('admin.tags.index')}}">
             <i class="fa fa-th"></i> 
-            <span> Horario</span>
+            <span> Tags</span>
           </a>
         </li> 
         <li>         
-          <a id="btn_horario" href="#">
+          <a id="#" href="#">
             <i class="fa fa-th"></i> 
             <span> Horarios de Programas</span>
           </a>

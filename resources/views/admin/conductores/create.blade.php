@@ -18,11 +18,11 @@
               <div class="box-body">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Mail:</label>
-                  <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Correo eletronico">
+                  <input type="text" class="form-control" id="#" placeholder="Correo eletronico">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Nombre del Comductor:</label>
-                  <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nombre">
+                  <input type="text" class="form-control" id="#" placeholder="Nombre">
                 </div>
                 <div>
                 <div>
@@ -32,7 +32,7 @@
                 </div>
                 <div class="form-group">
                   <label for="exampleInputFile">Fotografia del Conductor(700px x 267px)</label>
-                  <input type="file" id="exampleInputFile">
+                  <input type="file" id="#">
                 </div>
                 <div class="checkbox">
               
