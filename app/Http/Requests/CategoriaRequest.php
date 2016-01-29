@@ -24,7 +24,7 @@ class CategoriaRequest extends Request
     public function rules()
     {
         return [
-            //
+            'nombre' => 'max:60|required|uniqued:categorias',
         ];
     }
 }
