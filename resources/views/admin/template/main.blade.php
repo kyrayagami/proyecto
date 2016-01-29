@@ -18,13 +18,19 @@
 
 </head>
 
-<body>
+<body>	
+
 	@include('admin.template.partials.nav')
 	@include('admin.template.partials.menu')
 	
-	<section>
-		@yield('content')
+	<section class="section-admin">
+		<div class="panel panel-default">
+			<div class="panel-body">
+					@yield('content')
+			</div>
+		</div>
 	</section>
+
 	
 	@include('admin.template.partials.footer')
 	

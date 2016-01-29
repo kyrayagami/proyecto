@@ -3,5 +3,6 @@
 @section('title', 'Prueba')
 
 @section('content')
-   
+
+
 @endsection
