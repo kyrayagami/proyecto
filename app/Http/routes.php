@@ -29,3 +29,38 @@ Route::get('/', function () {
 Route::group(['middleware' => ['web']], function () {
     //
 });
+
+// rutas para el panel de administracion
+Route::group(['prefix'=> 'admin'], function(){
+	Route::resource('categorias', 'CategoriasController');
+	Route::get('categorias/{id}/destroy',[
+		'uses' 	=> 'CategoriasController@destroy',
+		'as'	=> 'admin.categorias.destroy'
+		]);
+	Route::resource('conductores', 'ConductoresController');
+	Route::get('conductores/{id}/destroy',[
+		'uses' 	=> 'ConductoresController@destroy',
+		'as'	=> 'admin.conductores.destroy'
+		]);
+	Route::resource('productores', 'ProductoresController');
+	Route::get('productores/{id}/destroy',[
+		'uses' 	=> 'ProductoresController@destroy',
+		'as'	=> 'admin.productores.destroy'
+		]);
+	Route::resource('programas', 'ProgramasController');
+	Route::get('programas/{id}/destroy',[
+		'uses' 	=> 'ProgramasController@destroy',
+		'as'	=> 'admin.programas.destroy'
+		]);
+	Route::resource('horarios', 'HorariosController');
+	Route::get('horarios/{id}/destroy',[
+		'uses' 	=> 'HorariosController@destroy',
+		'as'	=> 'admin.horarios.destroy'
+		]);
+	Route::resource('tasg', 'TagsController');
+	Route::get('tags/{id}/destroy',[
+		'uses' 	=> 'TagsController@destroy',
+		'as'	=> 'admin.tags.destroy'
+		]);
+
+});
