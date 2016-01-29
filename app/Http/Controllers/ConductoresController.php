@@ -6,13 +6,6 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
-<<<<<<< HEAD
-class ConductoresController extends Controller
-{
-    //
-=======
-//se llama la clase
 use App\Conductor;
 
 class ConductoresController extends Controller
@@ -22,5 +15,4 @@ class ConductoresController extends Controller
     {
     	return view('admin.conductores.index');
     }
->>>>>>> origin/master
 }
