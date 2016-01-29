@@ -2,7 +2,7 @@
   <section class="sidebar">
     <div class="user-panel">
       <div class="pull-left image">
-        <img src="plugins/dist_admin/img/avatar5.png" class="img-circle" alt="User Image">
+        <img src="{{asset('plugins/dist_admin/img/avatar5.png')}}" class="img-circle" alt="User Image">
       </div>
       <div class="pull-left info">
         <p>Administrador</p>          
