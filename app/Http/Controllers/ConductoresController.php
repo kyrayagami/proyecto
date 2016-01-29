@@ -15,4 +15,9 @@ class ConductoresController extends Controller
     {
     	return view('admin.conductores.index');
     }
+
+    public function create()
+    {
+    	return view('admin.conductores.create');
+    }
 }
