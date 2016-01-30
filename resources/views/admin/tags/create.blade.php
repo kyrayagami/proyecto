@@ -1,6 +1,6 @@
 @extends('admin.template.main')
 
-@section('title', 'Crear nuevo Tag')
+@section('title', 'Tag')
 
 @section('content')
 @include('admin.template.partials.errors')
@@ -13,19 +13,17 @@
               <h3 class="box-title">Agregar Tag</h3>
             </div>
 
-            <form role="form">
-              <div class="box-body">
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Tag:</label>
-                  <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Agregar Tag">
-                </div>
-   
-              </div>
-              <!-- /.box-body -->
-              <div class="box-footer">
-                <button type="submit" class="btn btn-primary">Agregar</button>
-              </div>
-            </form>
+          {!! Form::open(['route'=> 'admin.tags.store','method'=> 'POST'])!!}
+          <div>
+          <div class="form-group">
+            {!! Form::label('nombre','Nombre')!!}
+            {!! Form::text('nombre',null,['class'=>'form-control','placeholder'=> 'Nombre del Tag  ', 'required'])!!}
+          </div>
+          </div>
+          <div class="form-group">
+            {!! Form::submit('Agregar', ['class'=> 'btn btn-primary'])!!}
+          </div>
+            {!! Form::close()!!}
           </div>
         </div>
       </div>  

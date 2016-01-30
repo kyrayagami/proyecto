@@ -54,7 +54,7 @@
         </li>  
         <li>         
           <a id="#" href="{{route('admin.tags.index')}}">
-            <i class="fa fa-th"></i> 
+            <i class="glyphicon glyphicon-tags"></i> 
             <span> Tags</span>
           </a>
         </li> 
