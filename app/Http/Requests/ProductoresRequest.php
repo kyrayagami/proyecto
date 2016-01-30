@@ -13,7 +13,7 @@ class ProductoresRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,7 @@ class ProductoresRequest extends Request
     public function rules()
     {
         return [
-            'nombre' => 'min:3|required|uniqued:productores',
+            'nombre' => 'min:3|required|unique:productores',
             'correo' => 'min:4|max:250|required|unique:productores',
             'estatus'=> 'required',
             'perfil' => 'min:30',

@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests\CategoryRequest;
+use App\Http\Requests\CategoriaRequest;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Categoria;
 use Laracasts\Flash\Flash;
+use Illuminate\Support\Facades\Redirect;
 
 class CategoriasController extends Controller
 {
@@ -22,18 +23,18 @@ class CategoriasController extends Controller
     {
     	return view('admin.categorias.create');
     }
-    public function store(CategoryRequest $request)
+    public function store(CategoriaRequest $request)
     {
     	$categoria = new Categoria($request->all());
     	$categoria->save();
 
     	Flash::success('La categoria '.$categoria->nombre .' se registro con exito!!');
-    	return redirect()->route('admin.categoria.index');
+    	return redirect()->route('admin.categorias.index');
     }
     public function edit($id)
     {
     	$categoria = Categoria::find($id);
-    	return view('admin.categoria.edit')->with('categoria',$categoria);
+    	return view('admin.categorias.edit')->with('categoria',$categoria);
     }
     public function update(Request $request,$id)
     {
@@ -41,13 +42,13 @@ class CategoriasController extends Controller
     	$categoria->fill($request->all());
     	$categoria->save();
     	Flash::warning('La categoria : '.$categoria->nombre.' se actualizo con exito!!!');
-    	return redirect()->route('admin.categoria.index');
+    	return redirect()->route('admin.categorias.index');
     }
     public function destroy($id)
     {
     	$categoria = Categoria::find($id);
     	$categoria->delete();
     	Flash::error('Se elimino la categoria : '.$categoria->nombre.' satisfactoriamente!!');
-    	return redirect()->route('admin.cateogories.index');
+    	return redirect()->route('admin.cateogorias.index');
     }
 }

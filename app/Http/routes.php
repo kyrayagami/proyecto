@@ -31,7 +31,7 @@ Route::group(['middleware' => ['web']], function () {
 });
 
 // rutas para el panel de administracion
-Route::group(['prefix'=> 'admin'], function(){
+Route::group(['prefix'=> 'admin','middleware' => 'web'], function(){
 	Route::resource('categorias', 'CategoriasController');
 	Route::get('categorias/{id}/destroy',[
 		'uses' 	=> 'CategoriasController@destroy',

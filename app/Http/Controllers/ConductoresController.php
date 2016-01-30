@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\Http\Requests\ConductoresRequest;
 use App\Http\Controllers\Controller;
 use App\Conductor;
+use Laracasts\Flash\Flash;
+use Illuminate\Support\Facades\Redirect;
 
 class ConductoresController extends Controller
 {
@@ -25,6 +27,7 @@ class ConductoresController extends Controller
     public function store(ConductoresRequest $request)
     {
     	$conductor = new Conductor($request->all());
+        //$conductor->estatus = 'ACTIVO';
     	$conductor->save();
     	Flash::success('El conductor : '.$conductor->nombre.' se registro con éxito!!');
     	return redirect()->route('admin.conductores.index');
@@ -39,6 +42,9 @@ class ConductoresController extends Controller
     }
     public function destroy($id)
     {
-
+        $conductor = Conductor::find($id);
+        $conductor->delete();
+        Flash::error('Se elimnio el conductor : '.$conductor->nombre.' satisfactoriamente!!');
+        return redirect()->route('admin.conductores.index');
     }
 }

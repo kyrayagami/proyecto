@@ -69,7 +69,7 @@
 </aside>
 
 <div class="content-wrapper" name="div_dinamico" id="div_dinamico">
-  <section class="content-header">
+  <section class="content-header">  
   <!--
     <h1>Dashboard
       <small>Control panel</small>
@@ -81,6 +81,8 @@
     <h1 align="left">@yield('title','default')</h1>
   </section>      
   <section class="content">    
+  @include('flash::message')
+  @include('admin.template.partials.errors')
     <!--
     <h1 align="center">Bienvenido al Administrador de horarios  Canal 10</h1>-->
     <!--llama al contenido para ingresar informacion-->    

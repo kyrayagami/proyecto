@@ -3,10 +3,9 @@
 @section('content')
 
 @section('title',' Crear nueva Categoria')
-
-<section class="content">
   <div class="row">
     <div class="col-md-6">
+    <!--
       <div class="box box-primary">
         <div class="box-header with-border">
           <h3 class="box-title">Agregar Categoria</h3>
@@ -23,11 +22,21 @@
           <div class="box-footer">
             <button type="submit" class="btn btn-primary">Agregar</button>
           </div>
-        </form>
+        </form>-->
+         {!! Form::open(['route'=> 'admin.categorias.store','method'=> 'POST'])!!}
+          <div>
+          <div class="form-group">
+            {!! Form::label('nombre','Nombre')!!}
+            {!! Form::text('nombre',null,['class'=>'form-control','placeholder'=> 'Nombre de la categoria', 'required'])!!}
+          </div>
+          </div>
+          <div class="form-group">
+            {!! Form::submit('Agregar', ['class'=> 'btn btn-primary'])!!}
+          </div>
+            {!! Form::close()!!}
       </div>
     </div>
   </div>
-</section>
 
-   
+
 @endsection

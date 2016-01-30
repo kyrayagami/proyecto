@@ -13,7 +13,7 @@ class ConductoresRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,9 +24,8 @@ class ConductoresRequest extends Request
     public function rules()
     {
         return [
-            'nombre' => 'min:3|required|uniqued:conductores',
-            'correo' => 'min:4|max:250|required|unique:conductores',
-            'estatus'=> 'required',
+            'nombre' => 'min:3|required|unique:conductores',
+            'correo' => 'min:4|max:250|required|unique:conductores',            
             'perfil' => 'min:30',
             'imagen_url' => 'required',
         ];

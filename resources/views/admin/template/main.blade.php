@@ -19,13 +19,12 @@
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
-	<div class="wrapper">
-  
+	<div class="wrapper">  		
 		@include('admin.template.partials.nav')
-		@include('admin.template.partials.menu')	
+		@include('admin.template.partials.menu')
 		@include('admin.template.partials.footer')
 
-	</div>
+	</div>	
 
 	<script src="{{asset('plugins/jquery/js/jquery-2.1.4.js')}}"></script>
 	<script src="{{asset('plugins/bootstrap/js/bootstrap.js')}}" ></script>

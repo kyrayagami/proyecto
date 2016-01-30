@@ -13,7 +13,7 @@ class TagsRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,7 @@ class TagsRequest extends Request
     public function rules()
     {
         return [
-            'nombre' => 'max:60|required|uniqued:tags',
+            'nombre' => 'max:60|required|unique:tags',
         ];
     }
 }

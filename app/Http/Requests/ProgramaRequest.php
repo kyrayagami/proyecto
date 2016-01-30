@@ -13,7 +13,7 @@ class ProgramaRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,7 @@ class ProgramaRequest extends Request
     public function rules()
     {
         return [
-            'nombre' => 'min:3|required|uniqued:programas',            
+            'nombre' => 'min:3|required|unique:programas',            
             'estatus'=> 'required',
             'descripcion_breve' => 'min:15',                    
             'sipnosis' => 'required',           
