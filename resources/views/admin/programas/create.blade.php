@@ -12,7 +12,7 @@
           <div class="box box-primary">
               <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Datos de la nota</h3>
+              <h3 class="box-title">Datos del Programa </h3>
             </div>
 
             <form role="form">
@@ -123,11 +123,6 @@
                 <div class="form-group">
                   <div class="col-sm-6">
                       
-
-
-
-
-
               </div>
             </div>
             </form>
