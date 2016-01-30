@@ -22,7 +22,7 @@ class AddHorariosTable extends Migration
             $table->text('descripcion');            
             $table->text('tipo_audiencia');
             $table->foreign('dia_id')->references('id')->on('dias');
-            $table->foreign('programa_id')->references('id_programa')->on('programas');
+            $table->foreign('programa_id')->references('id')->on('programas');
             $table->timestamps();
         });
     }

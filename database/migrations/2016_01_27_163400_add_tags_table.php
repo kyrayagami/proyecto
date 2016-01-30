@@ -23,7 +23,7 @@ class AddTagsTable extends Migration
             $table->integer('programa_id')->unsigned();
             $table->integer('tag_id')->unsigned();
             // $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');
-            $table->foreign('programa_id')->references('id_programa')->on('programas');
+            $table->foreign('programa_id')->references('id')->on('programas');
             $table->foreign('tag_id')->references('id')->on('tags');
             $table->timestamps();
         });
