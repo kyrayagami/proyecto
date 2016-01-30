@@ -30,14 +30,14 @@
             <tbody>
               @foreach ($conductores as $conductor )
                 <tr>
-                  <td>{{$conductor->id_conductor}}</td>
+                  <td>{{$conductor->id}}</td>
                   <td>{{$conductor->nombre}}</td>
                   <td>{{$conductor->correo}}</td>
                   <td>{{$conductor->perfil}}</td>
                   <td>{{$conductor->estatus}}</td>
-                  <td><a href="{{ route('admin.conductores.edit',$conductor->id_conductor)}}"class="btn btn-warning"> <span class="glyphicon glyphicon-pencil"></span></a>
+                  <td><a href="{{ route('admin.conductores.edit',$conductor->id)}}"class="btn btn-warning"> <span class="glyphicon glyphicon-pencil"></span></a>
 
-                  <a href="{{ route('admin.conductores.destroy',$conductor->id_conductor) }}" class="btn btn-danger" onclick="return confirm('¿Seguro de eliminar esta conductor?')"> <span class=" glyphicon glyphicon-remove-circle"></span> </a>
+                  <a href="{{ route('admin.conductores.destroy',$conductor->id) }}" class="btn btn-danger" onclick="return confirm('¿Seguro de eliminar esta conductor?')"> <span class=" glyphicon glyphicon-remove-circle"></span> </a>
                   </td>
                 </tr>
               @endforeach              

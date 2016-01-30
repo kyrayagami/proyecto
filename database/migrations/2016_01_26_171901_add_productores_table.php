@@ -13,7 +13,7 @@ class AddProductoresTable extends Migration
     public function up()
     {
         Schema::create('productores', function (Blueprint $table) {
-            $table->increments('id_productor');
+            $table->increments('id');
             $table->string('nombre',100);
             $table->string('correo');
             $table->string('estatus',20);

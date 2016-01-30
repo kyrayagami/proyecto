@@ -13,7 +13,7 @@ class AddProgramasTable extends Migration
     public function up()
     {
         Schema::create('programas', function (Blueprint $table) {
-            $table->increments('id_programa');
+            $table->increments('id');
             $table->string('nombre');            
             $table->string('estatus');
             $table->string('descripcion_breve');
@@ -26,8 +26,8 @@ class AddProgramasTable extends Migration
             $table->integer('categoria_id')->unsigned();
             $table->integer('productor_id')->unsigned();            
 
-            $table->foreign('categoria_id')->references('id_categoria')->on('categorias');
-            $table->foreign('productor_id')->references('id_productor')->on('productores');                        
+            $table->foreign('categoria_id')->references('id')->on('categorias');
+            $table->foreign('productor_id')->references('id')->on('productores');                        
             $table->timestamps();
         });
         Schema::create('conductor_programa', function (Blueprint $table) {

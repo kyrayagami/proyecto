@@ -16,7 +16,7 @@ class ConductoresController extends Controller
     //
     public function index()
     {
-    	$conductores = Conductor::orderBy('id_conductor','DESC')->paginate(5);
+    	$conductores = Conductor::orderBy('id','DESC')->paginate(5);
     	return view('admin.conductores.index')->with('conductores',$conductores);
     }
 

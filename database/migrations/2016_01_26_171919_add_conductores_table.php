@@ -13,7 +13,7 @@ class AddConductoresTable extends Migration
     public function up()
     {
         Schema::create('conductores', function (Blueprint $table) {
-            $table->increments('id_conductor');
+            $table->increments('id');
             $table->string('nombre',100);
             $table->string('correo');
             $table->string('estatus',20);
