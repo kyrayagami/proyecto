@@ -3,6 +3,7 @@
 @section('content')
 
 @section('title',' Crear nueva Categoria')
+@include('admin.template.partials.errors')
   <div class="row">
     <div class="col-md-6">
     <!--

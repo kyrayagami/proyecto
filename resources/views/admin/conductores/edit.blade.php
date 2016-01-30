@@ -1,45 +1,53 @@
 @extends('admin.template.main')
 
-@section('title', 'Prueba')
+@section('title', 'Editar Conductor : '.$conductor->nombre)
 
 @section('content')
-
- <section class="content">
+@include('admin.template.partials.errors')
       <div class="row">
         <!-- left column -->
-        <div class="col-md-6">
+        <div class="col-md-10">
           <!-- general form elements  no borrar -->
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Modificar Datos del Conductor</h3>
-            </div>
-
-            <form role="form">
-              <div class="box-body">
+              <h3 class="box-title">Datos del Conductor</h3>
+            </div>          
+              <div class="box-body">                
+              {!! Form::open(['route' => ['admin.conductores.update',$conductor], 'method' => 'PUT'])!!}
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Mail:</label>
-                  <input type="text" class="form-control" id="#" placeholder="Correo eletronico">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Nombre del Comductor:</label>
-                  <input type="text" class="form-control" id="#" placeholder="Nombre">
-                </div>
-                <div>
-                <div>
-                  <label for="exampleInputEmail1">Biografía:</label>
-                </div>
-                  <textarea rows="11" cols="107"></textarea>
-                </div>
-
+              {!! Form::label('nombre','Nombre')!!}
+              {!! Form::text('nombre',$conductor->nombre,['class' => 'form-control', 'placeholder'=> 'Nombre del Conductor','required'])!!}
+              </div>           
+              <div class="form-group">
+                  {!! Form::label('correo','Correo Electronico')!!}
+                  {!! Form::email('correo',$conductor->correo,['class' => 'form-control','placeholder' => 'ejemplo@gmail.com','required'])!!}
               </div>
-              <!-- /.box-body -->
+
+              <div class="form-group">
+              {!! Form::label('perfil','Contenido')!!}
+              {!! Form::textarea('perfil',$conductor->perfil,['class' => 'form-control textarea-content'])!!}      
+              </div>              
+               <div class="form-group">
+              {!! Form::label('imagen_url','Imagen')!!}
+              {!! Form::text('imagen_url',$conductor->imagen_url,['class' => 'form-control','placeholder' => 'http://res.cloudinary.com/image/ejemplo.jpg ','required'])  !!}
+              </div>
+              <div class="form-group">
+                {!! Form::label('estatus','Estatus')!!}
+                {!! Form::select('estatus',['INACTIVO' => 'Inactivo', 'ACTIVO' =>'Activo'],$conductor->estatus,['class' => 'form-control'])!!}
+              </div>
               <div class="box-footer">
-                <button type="submit" class="btn btn-primary">Agregar</button>
+                <button type="submit" class="btn btn-primary">Actualizar</button>
               </div>
-            </form>
+              {!! Form::close()!!}
+            
           </div>
         </div>
-      </div>
-  </section>
-   
+      </div>        
+@endsection
+
+@section('js')
+  <script>
+    $('.textarea-content').trumbowyg({
+    });
+  </script>
 @endsection

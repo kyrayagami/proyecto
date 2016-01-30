@@ -82,7 +82,7 @@
   </section>      
   <section class="content">    
   @include('flash::message')
-  @include('admin.template.partials.errors')
+  
     <!--
     <h1 align="center">Bienvenido al Administrador de horarios  Canal 10</h1>-->
     <!--llama al contenido para ingresar informacion-->    

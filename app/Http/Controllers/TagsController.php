@@ -7,9 +7,9 @@ use Illuminate\Http\Request\TagsRequest;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-//llama la clase
-
 use App\Tag;
+use Laracasts\Flash\Flash;
+use Illuminate\Support\Facades\Redirect;
 
 class TagsController extends Controller
 {

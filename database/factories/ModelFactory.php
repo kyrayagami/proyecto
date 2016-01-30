@@ -16,7 +16,8 @@ $factory->define(App\Productor::class, function(Generator $faker){
 		'nombre' => $faker->name,
         'correo' => $faker->email,
         'perfil' => $faker->text,
-        'imagen_url' => $faker->url
+        'imagen_url' => $faker->url,
+        'estatus' => 'ACTIVO'
 	];
 	return $array;
 });
@@ -26,7 +27,8 @@ $factory->define(App\Conductor::class, function(Generator $faker){
 		'nombre' => $faker->name,
         'correo' => $faker->email,
         'perfil' => $faker->text,
-        'imagen_url' => $faker->url
+        'imagen_url' => $faker->url,
+        'estatus' => 'ACTIVO'
 	];
 	return $array;
 });

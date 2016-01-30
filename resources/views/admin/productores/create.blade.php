@@ -1,48 +1,48 @@
 @extends('admin.template.main')
 
-@section('title', 'Prueba')
+@section('title', 'Craer nuevo Productor')
 
-@section('content')
-	
+@section('content')    
+@include('admin.template.partials.errors')
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-10">
+          <!-- general form elements  no borrar -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Datos del Productor</h3>
+            </div>            
+              <div class="box-body">  
+                {!! Form::open(['route' => 'admin.productores.store', 'method' => 'POST'])!!}
+                  <div class="form-group">
+                    {!! Form::label('nombre','Nombre')!!}
+                    {!! Form::text('nombre',null,['class' => 'form-control', 'placeholder'=> 'Nombre del Conductor','required'])!!}
+                  </div>           
+                  <div class="form-group">
+                    {!! Form::label('correo','Correo Electronico')!!}
+                    {!! Form::email('correo',null,['class' => 'form-control','placeholder' => 'ejemplo@gmail.com','required'])!!}
+                  </div>
 
-<section class="content">
-  <div class="row">
-    <div class="col-md-6">
-      <div class="box box-primary">
-        <div class="box-header with-border">
-          <h3 class="box-title">Datos del Productor</h3>
+                  <div class="form-group">
+                    {!! Form::label('perfil','Contenido')!!}
+                    {!! Form::textarea('perfil',null,['class' => 'form-control textarea-content'])!!}
+                  </div>              
+                  <div class="form-group">
+                    {!! Form::label('imagen_url','Imagen')!!}
+                    {!! Form::text('imagen_url',null,['class' => 'form-control','placeholder' => 'http://res.cloudinary.com/ejemplo.jpg ','required'])  !!}
+                  </div>
+                  <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Agregar</button>
+                  </div>
+                  {!! Form::close()!!}
+          </div>
         </div>
-        <form role="form">
-          <div class="box-body">
-            <div class="form-group">
-              <label for="exampleInputEmail1">Mail:</label>
-              <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Correo eletronico">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Nombre del Productor:</label>
-              <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nombre">
-            </div>
-            <div>
-            <div>
-              <label for="exampleInputEmail1">Biografía:</label>
-            </div>
-              <textarea rows="11" cols="107"></textarea>
-            </div>
-            <div class="form-group">
-              <label for="exampleInputFile">Fotografia del productor(700px x 267px)</label>
-              <input type="file" id="exampleInputFile">
-            </div>
-            <div class="checkbox">
-              
-            </div>
-          </div>
-          <div class="box-footer">
-            <button type="submit" class="btn btn-primary">Agregar</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
-   
+      </div>   
+@endsection
+
+@section('js')
+  <script>
+    $('.textarea-content').trumbowyg({
+    });
+  </script>
 @endsection

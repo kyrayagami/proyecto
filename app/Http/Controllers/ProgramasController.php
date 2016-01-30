@@ -7,8 +7,9 @@ use Illuminate\Http\ProgramasRequest;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-//llama la clase
 use App\Programa;
+use Laracasts\Flash\Flash;
+use Illuminate\Support\Facades\Redirect;
 
 class ProgramasController extends Controller
 {

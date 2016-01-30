@@ -17,7 +17,7 @@ class AddConductoresTable extends Migration
             $table->string('nombre',100);
             $table->string('correo');
             $table->string('estatus',20);
-            $table->string('perfil');
+            $table->text('perfil');
             $table->string('imagen_url');
             $table->timestamps();
         });

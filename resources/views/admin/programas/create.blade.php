@@ -1,10 +1,9 @@
 @extends('admin.template.main')
 
-@section('title', 'Prueba')
+@section('title', 'Crear nuevo Programa')
 
 @section('content')
-
-<section class="content">
+@include('admin.template.partials.errors')
       <div class="row">
         <!-- left column -->
         <div class="col-md-6">
@@ -129,6 +128,4 @@
           </div>
         </div>
       </div>
-</section>
-   
 @endsection

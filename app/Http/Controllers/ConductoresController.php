@@ -27,18 +27,25 @@ class ConductoresController extends Controller
     public function store(ConductoresRequest $request)
     {
     	$conductor = new Conductor($request->all());
-        //$conductor->estatus = 'ACTIVO';
+        $conductor->estatus = 'ACTIVO';
     	$conductor->save();
     	Flash::success('El conductor : '.$conductor->nombre.' se registro con éxito!!');
     	return redirect()->route('admin.conductores.index');
     }
     public function edit($id)
     {
+        $conductor = Conductor::find($id);
+        return view('admin.conductores.edit')->with('conductor',$conductor);
 
     }    
     public function update(Request $request,$id)
     {
 
+        $conductor = Conductor::find($id);
+        $conductor->fill($request->all());        
+        $conductor->save();
+        Flash::warning('EL conductor : '.$conductor->nombre.' se actualizo correctamente!!');
+        return redirect()->route('admin.conductores.index');
     }
     public function destroy($id)
     {

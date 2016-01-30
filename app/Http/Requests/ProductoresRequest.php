@@ -25,8 +25,7 @@ class ProductoresRequest extends Request
     {
         return [
             'nombre' => 'min:3|required|unique:productores',
-            'correo' => 'min:4|max:250|required|unique:productores',
-            'estatus'=> 'required',
+            'correo' => 'min:4|max:250|required|unique:productores',            
             'perfil' => 'min:30',
             'imagen_url' => 'required',
         ];

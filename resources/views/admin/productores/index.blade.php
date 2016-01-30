@@ -1,13 +1,11 @@
 @extends('admin.template.main')
 
-@section('title', 'Prueba')
+@section('title', 'Productores')
 
 @section('content')
-
-<section class="content">                                  
   <div class="col-xs-9">
     <div>
-      <button id="#" class="btn btn-primary btn-md ">Agregar</button>
+      <a href="{{ route('admin.productores.create')}}" class="btn btn-success">Agregar nuevo Productor</a>
     </div>
   </div>        
   <div class="col-xs-12"> 
@@ -22,19 +20,32 @@
               <th>ID</th>
               <th>Nombre</th>
               <th>Correo</th>
-              <th>Descripcion</th>                      
-              <th>Foto</th>
+              <th>Perfil</th>               
               <th>Estatus</th>                      
               <th>Acciones</th> 
             </tr>  
           </thead>              
           <tbody>
+              @foreach ($productores as $productor )
+                <tr>
+                  <td>{{$productor->id}}</td>
+                  <td>{{$productor->nombre}}</td>
+                  <td>{{$productor->correo}}</td>
+                  <td>{{$productor->perfil}}</td>
+                  <td>{{$productor->estatus}}</td>
+                  <td><a href="{{ route('admin.productores.edit',$productor->id)}}"class="btn btn-warning"> <span class="glyphicon glyphicon-pencil"></span></a>
+
+                  <a href="{{ route('admin.productores.destroy',$productor->id) }}" class="btn btn-danger" onclick="return confirm('¿Seguro de eliminar esta productor?')"> <span class=" glyphicon glyphicon-remove-circle"></span> </a>
+                  </td>
+                </tr>
+              @endforeach
                            
           </tbody>
         </table>
       </div>
+        <div class="text-center">
+          {!! $productores->render()!!}
+        </div>
     </div>      
-  </div>                                   
-</section> 
-   
+  </div>
 @endsection

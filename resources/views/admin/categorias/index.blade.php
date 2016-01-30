@@ -2,8 +2,7 @@
 
 @section('title', 'Categorias')
 
-@section('content')
-	<section class="content">                                  
+@section('content')                                
     <div class="col-xs-9">
       <div>          
           <a href="{{ route('admin.categorias.create')}}" class="btn btn-primary"> Agregar nueva categoria</a>
@@ -42,6 +41,4 @@
         </div>
       </div>        
     </div>                                  
-</section>  
-
 @endsection
