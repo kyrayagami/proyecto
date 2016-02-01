@@ -58,14 +58,33 @@ class ProgramasController extends Controller
     public function edit($id)
     {
         $programa = Programa::find($id);
-        return view('admin.programas.edit')->with('programa',$programa);
+        $programa -> categoria();
+        $programa -> productor();
+
+        $categorias = Categoria::orderBy('nombre','DESC')->lists('nombre','id');
+        $productores = Productor::orderBy('nombre','ASC')->lists('nombre','id');
+        $tags = Tag::orderBy('id','DESC')->lists('nombre','id');
+        $mis_tags = $programa->tags->lists('id')->ToArray();
+
+        $conductores = Conductor::orderBy('id','DESC')->lists('nombre','id');
+        $mis_conductores = $programa->conductores->lists('id')->ToArray();
+        return view('admin.programas.edit')
+            ->with('programa',$programa)
+            ->with('productores',$productores)
+            ->with('categorias',$categorias)
+            ->with('tags',$tags)
+            ->with('mis_tags',$mis_tags)
+            ->with('conductores',$conductores)
+            ->with('mis_conductores',$mis_conductores);
     }
     public function update(Request $request,$id)
     {
         $programa= Programa::find($id);
         $programa->fill($request->all());
-        /* todavia falta para conductores*/
+        /* todavia falta para conductores*/        
         $programa->save();
+        $programa->tags()->sync($request->tags);
+        $programa->conductores()->sync($request->conductores);
         Flash::warning('El programa : '.$programa->nombre.' se actualizo con exito!!!');
         return redirect()->route('admin.programas.index');
     }

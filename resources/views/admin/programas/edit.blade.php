@@ -1,6 +1,6 @@
 @extends('admin.template.main')
 
-@section('title', 'Editar Programa ')
+@section('title', 'Editar Programa : '.$programa->nombre)
 
 @section('content')    
 @include('admin.template.partials.errors')
@@ -10,50 +10,55 @@
           <!-- general form elements  no borrar -->
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Datos del Programa a Editar</h3>
+              <h3 class="box-title">Datos del Programa</h3>
             </div>            
               <div class="box-body">  
-                {!! Form::open(['route' => 'admin.programas.store', 'method' => 'POST'])!!}
+                {!! Form::open(['route' => ['admin.programas.update',$programa], 'method' => 'PUT'])!!}
                   <div class="form-group">
                     {!! Form::label('nombre','Nombre')!!}
-                    {!! Form::text('nombre',null,['class' => 'form-control', 'placeholder'=> 'Nombre del Programa','required','autofocus'])!!}
+                    {!! Form::text('nombre',$programa->nombre,['class' => 'form-control', 'placeholder'=> 'Nombre del Programa','required','autofocus'])!!}
                   </div>                           
                   <div class="form-group">
                     {!! Form::label('descripcion_breve','Descripcion Breve')!!}
-                    {!! Form::text('descripcion_breve',null,['class' => 'form-control'])!!}
+                    {!! Form::text('descripcion_breve',$programa->descripcion_breve,['class' => 'form-control','placeholder'=> 'Descripcion Breve'])!!}
                   </div>      
                   <div class="form-group">
                     {!! Form::label('img_programa','Imagen Programa')!!}
-                    {!! Form::text('img_programa',null,['class' => 'form-control','placeholder' => 'http://res.cloudinary.com/ejemplo.jpg ','required'])  !!}
+                    {!! Form::text('img_programa',$programa->img_programa,['class' => 'form-control','placeholder' => 'http://res.cloudinary.com/ejemplo.jpg ','required'])  !!}
                   </div>
                   <div class="form-group">
                     {!! Form::label('img_app','Imagen App')!!}
-                    {!! Form::text('img_app',null,['class' => 'form-control','placeholder' => 'http://res.cloudinary.com/app.jpg ','required'])  !!}
+                    {!! Form::text('img_app',$programa->img_app,['class' => 'form-control','placeholder' => 'http://res.cloudinary.com/app.jpg ','required'])  !!}
                   </div>
                   <div class="form-group">
                     {!! Form::label('img_slider','Imagen Slider')!!}
-                    {!! Form::text('img_slider',null,['class' => 'form-control','placeholder' => 'http://res.cloudinary.com/Slider.jpg ','required'])  !!}
+                    {!! Form::text('img_slider',$programa->img_slider,['class' => 'form-control','placeholder' => 'http://res.cloudinary.com/Slider.jpg ','required'])  !!}
                   </div>
                    <div class="form-group">
                     {!! Form::label('slogan_slider','Slogan o Título del Slider')!!}
-                    {!! Form::text('slogan_slider',null,['class' => 'form-control','placeholder' => 'http://res.cloudinary.com/ejemplo.jpg ','required'])  !!}
+                    {!! Form::text('slogan_slider',$programa->slogan_slider,['class' => 'form-control','placeholder' => 'describe a la imagen slider ','required'])  !!}
                   </div>
                   <div class="form-group">
                     {!! Form::label('sipnosis','Sipnosis')!!}
-                    {!! Form::textarea('sipnosis',null,['class' => 'form-control textarea-content'])!!}
+                    {!! Form::textarea('sipnosis',$programa->sipnosis,['class' => 'form-control textarea-content'])!!}
                   </div> 
                   <div class="form-group">
                     {!! Form::label('categoria_id','Categoria')!!}
-                    {!! Form::select('categoria_id',$categorias,null,['class' => 'form-control select-category', 'required'])!!}
+                    {!! Form::select('categoria_id',$categorias,$programa->categoria->id,['class' => 'form-control select-categoria', 'required'])!!}
                   </div>
                   <div class="form-group">
                     {!! Form::label('productor_id','Productor')!!}
-                    {!! Form::select('productor_id',$productores,null,['class' => 'form-control select-productor', 'required'])!!}
+                    {!! Form::select('productor_id',$productores,$programa->productor->id,['class' => 'form-control select-productor', 'required'])!!}
+                  </div>
+
+                   <div class="form-group">                  
+                    {!! Form::label('conductores','Conductores')!!}
+                    {!! Form::select('conductores[]',$conductores,$mis_conductores,['class' => 'form-control select-conductores','multiple'])!!}
                   </div>
 
                   <div class="form-group">                  
                     {!! Form::label('tags','Tags')!!}
-                    {!! Form::select('tags[]',$tags,null,['class' => 'form-control select-tag','multiple'])!!}
+                    {!! Form::select('tags[]',$tags,$mis_tags,['class' => 'form-control select-tag','multiple'])!!}
                   </div>
                  
                   <div class="box-footer">
@@ -69,7 +74,7 @@
   <script>
     $('.textarea-content').trumbowyg({
     });
-    $('.select-category').chosen({
+    $('.select-categoria').chosen({
       placeholder_text_single: 'Selecione una Categoria'
     });
     $('.select-productor').chosen({
@@ -77,14 +82,12 @@
     });
     $('.select-tag').chosen({
       no_results_text: "Oops, no se encontro nada!",
-      placeholder_text_multiple : 'Seleccione un maximo de 3 tags',
-      max_selected_options: 3,
+      placeholder_text_multiple : 'Seleccione sus tags',
       search_contains: true     
     });
-    $('.select-tag').chosen({
+    $('.select-conductores').chosen({
       no_results_text: "Oops, no se encontro nada!",
-      placeholder_text_multiple : 'Seleccione un maximo de 3 tags',
-      max_selected_options: 3,
+      placeholder_text_multiple : 'Seleccione sus conductores',
       search_contains: true     
     });
   </script>

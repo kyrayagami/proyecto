@@ -44,7 +44,7 @@
                   </div> 
                   <div class="form-group">
                     {!! Form::label('categoria_id','Categoria')!!}
-                    {!! Form::select('categoria_id',$categorias,null,['class' => 'form-control select-category', 'required'])!!}
+                    {!! Form::select('categoria_id',$categorias,null,['class' => 'form-control select-categoria', 'required'])!!}
                   </div>
                   <div class="form-group">
                     {!! Form::label('productor_id','Productor')!!}
@@ -53,7 +53,7 @@
 
                    <div class="form-group">                  
                     {!! Form::label('conductores','Conductores')!!}
-                    {!! Form::select('conductores[]',$conductores,null,['class' => 'form-control select-tag','multiple'])!!}
+                    {!! Form::select('conductores[]',$conductores,null,['class' => 'form-control select-conductor','multiple'])!!}
                   </div>
 
                   <div class="form-group">                  
@@ -74,7 +74,7 @@
   <script>
     $('.textarea-content').trumbowyg({
     });
-    $('.select-category').chosen({
+    $('.select-categoria').chosen({
       placeholder_text_single: 'Selecione una Categoria'
     });
     $('.select-productor').chosen({
@@ -82,14 +82,12 @@
     });
     $('.select-tag').chosen({
       no_results_text: "Oops, no se encontro nada!",
-      placeholder_text_multiple : 'Seleccione un maximo de 3 tags',
-      max_selected_options: 3,
+      placeholder_text_multiple : 'Seleccione sus tags',
       search_contains: true     
     });
-    $('.select-tag').chosen({
+    $('.select-conductor').chosen({
       no_results_text: "Oops, no se encontro nada!",
-      placeholder_text_multiple : 'Seleccione un maximo de 3 tags',
-      max_selected_options: 3,
+      placeholder_text_multiple : 'Seleccione sus conductores',
       search_contains: true     
     });
   </script>
