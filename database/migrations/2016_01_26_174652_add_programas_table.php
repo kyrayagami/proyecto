@@ -26,8 +26,8 @@ class AddProgramasTable extends Migration
             $table->integer('categoria_id')->unsigned();
             $table->integer('productor_id')->unsigned();            
 
-            $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('cascade');
-            $table->foreign('productor_id')->references('id')->on('productores')->onDelete('cascade');
+            $table->foreign('categoria_id')->references('id')->on('categorias');
+            $table->foreign('productor_id')->references('id')->on('productores');
             $table->timestamps();
         });
         Schema::create('conductor_programa', function (Blueprint $table) {

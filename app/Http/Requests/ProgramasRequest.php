@@ -24,9 +24,11 @@ class ProgramasRequest extends Request
     public function rules()
     {
         return [
-            'nombre' => 'min:3|required|unique:programas',            
-            'descripcion_breve' => 'min:15',                    
-            'sipnosis' => 'required',           
+            'nombre' => 'min:3|required|unique:programas', 
+            'logo'    =>'url',
+            'img_programa'    =>'url',
+            'img_app'    =>'url',
+            'img_slider'    =>'url'
         ];
     }
 }

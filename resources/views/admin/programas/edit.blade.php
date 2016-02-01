@@ -58,7 +58,7 @@
 
                   <div class="form-group">                  
                     {!! Form::label('tags','Tags')!!}
-                    {!! Form::select('tags[]',$tags,$mis_tags,['class' => 'form-control select-tag','multiple'])!!}
+                    {!! Form::select('tags[]',$tags,$mis_tags,['class' => 'form-control select-tag','multiple','required'])!!}
                   </div>
                  
                   <div class="box-footer">

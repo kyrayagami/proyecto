@@ -46,12 +46,11 @@ class ProgramasController extends Controller
     public function store(ProgramasRequest $request)
     {
     	$programa = new Programa($request->all());
-        $programa->estatus = 'ACTIVO';
+        $programa->estatus = 'ACTIVO';        
         $programa->save();
 
-        $programa->conductores()->sync($request->conductores);
-        $programa->tags()->sync($request->tags);
-
+        /*$programa->conductores()->sync($request->conductores);
+        $programa->tags()->sync($request->tags);*/        
         Flash::success('El programa '.$programa->nombre .' se registro con exito!!');
         return redirect()->route('admin.programas.index');
     }
