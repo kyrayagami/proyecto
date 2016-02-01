@@ -2,12 +2,10 @@
 
 @section('title', 'Programas')
 
-@section('content')
-
-<section class="content">                                  
+@section('content')                                
   <div class="col-xs-9">
      <div>
-        <button id="#" class="btn btn-primary btn-md ">Agregar</button>
+         <a href="{{ route('admin.programas.create')}}" class="btn btn-primary"> Agregar nuevo Programa</a>
      </div>
   </div>        
   <div class="col-xs-12"> 
@@ -18,26 +16,37 @@
         <div class="box-body table-responsive no-padding">            
           <table id="#" class="table table-bordered">          
             <thead>
-               <tr>
-                 <th>ID</th>                    
+               <tr>                            
                  <th>Nombre</th>                      
-                 <th>Descripcion</th>
-                 <th>Correo</th>
-                 <th>Categoria</th> 
-                 <th>Logo</th>
-                 <th>Slide</th>
-                 <th>Imagen</th>                      
+                 <th>Descripcion breve</th>                 
+                 <th>Categoria</th>
+                 <th>Productor</th>
+                 <th>Slogan/Titulo de Slider</th>
                  <th>Estatus</th>
                  <th>Acciones</th> 
                </tr>  
             </thead>              
                <tbody>
+                  @foreach ($programas as $programa)
+                    <tr>
+                        <td>{{ $programa->nombre}}</td>
+                        <td>{{ $programa->descripcion_breve}}</td>
+                        <td>{{ $programa->categoria->nombre}}</td>
+                        <td>{{ $programa->productor->nombre}}</td>
+                        <td>{{ $programa->slogan_slider}}</td>
+                        <td>{{ $programa->estatus}}</td>
+                        <td> <a href="{{route('admin.programas.edit',$programa->id)}}" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></a>
 
+                        <a href="{{ route('admin.programas.destroy',$programa->id) }}" class="btn btn-danger" onclick="return confirm('¿Seguro de eliminar este programa?')"> <span class=" glyphicon glyphicon-remove-circle"></span> </a>
+                        </td>
+                    </tr>
+                  @endforeach
                </tbody>
           </table>
+          <div class="text-center">
+            {!! $programas->render()!!}
+          </div>
         </div>
     </div>       
   </div>                                  
-</section> 
-   
 @endsection

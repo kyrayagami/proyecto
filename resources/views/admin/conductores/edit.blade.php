@@ -16,7 +16,7 @@
               {!! Form::open(['route' => ['admin.conductores.update',$conductor], 'method' => 'PUT'])!!}
                 <div class="form-group">
               {!! Form::label('nombre','Nombre')!!}
-              {!! Form::text('nombre',$conductor->nombre,['class' => 'form-control', 'placeholder'=> 'Nombre del Conductor','required'])!!}
+              {!! Form::text('nombre',$conductor->nombre,['class' => 'form-control', 'placeholder'=> 'Nombre del Conductor','required','autofocus'])!!}
               </div>           
               <div class="form-group">
                   {!! Form::label('correo','Correo Electronico')!!}

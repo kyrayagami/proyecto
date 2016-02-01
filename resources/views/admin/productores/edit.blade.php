@@ -16,7 +16,7 @@
                 {!! Form::open(['route' => ['admin.productores.update',$productor], 'method' => 'PUT'])!!}
                   <div class="form-group">
                     {!! Form::label('nombre','Nombre')!!}
-                    {!! Form::text('nombre',$productor->nombre,['class' => 'form-control', 'placeholder'=> 'Nombre del Conductor','required'])!!}
+                    {!! Form::text('nombre',$productor->nombre,['class' => 'form-control', 'placeholder'=> 'Nombre del Conductor','required','autofocus'])!!}
                   </div>           
                   <div class="form-group">
                     {!! Form::label('correo','Correo Electronico')!!}

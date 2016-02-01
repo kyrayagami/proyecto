@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class ProgramaRequest extends Request
+class ProgramasRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,6 @@ class ProgramaRequest extends Request
     {
         return [
             'nombre' => 'min:3|required|unique:programas',            
-            'estatus'=> 'required',
             'descripcion_breve' => 'min:15',                    
             'sipnosis' => 'required',           
         ];

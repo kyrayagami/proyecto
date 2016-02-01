@@ -16,7 +16,7 @@
                 {!! Form::open(['route' => 'admin.conductores.store', 'method' => 'POST'])!!}
                   <div class="form-group">
                     {!! Form::label('nombre','Nombre')!!}
-                    {!! Form::text('nombre',null,['class' => 'form-control', 'placeholder'=> 'Nombre del Conductor','required'])!!}
+                    {!! Form::text('nombre',null,['class' => 'form-control', 'placeholder'=> 'Nombre del Conductor','required','autofocus'])!!}
                   </div>           
                   <div class="form-group">
                     {!! Form::label('correo','Correo Electronico')!!}

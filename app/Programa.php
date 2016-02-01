@@ -22,9 +22,9 @@ class Programa extends Model
     {
         return $this->belongsTo('App\Categoria');
     }  
-    public function conductor()  
+    public function conductores()  
     {
-        return $this->hasMany('App\Conductor');
+        return $this->belongsToMany('App\Conductor');
     }
     public function productor()
     {
@@ -34,8 +34,8 @@ class Programa extends Model
     {
         return $this->hasMany('App\Horario');
     }
-    public function tag()
+    public function tags()
     {
-        return $this->hasMany('App\Tag');
+        return $this->belongsToMany('App\Tag');
     }
 }

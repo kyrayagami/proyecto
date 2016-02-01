@@ -9,8 +9,8 @@ class Tag extends Model
 	protected $table = "tags";
     protected $fillable = [ 'nombre'];
 
-    public function programas()
+    public function programa()
     {
-    	return $this->belongsToMany('App\Programa')->withTimestamps();
+    	return $this->hasMany('App\Programa')->withTimestamps();
     }
 }

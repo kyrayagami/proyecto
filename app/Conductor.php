@@ -11,6 +11,6 @@ class Conductor extends Model
 
     public function conductor()
     {
-    	return $this->belongsToMany('App\Programa');
+    	return $this->hasMany('App\Programa');
     }
 }
