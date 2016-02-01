@@ -34,11 +34,11 @@
                       </tr>                    
                   @endforeach
               </tbody>
-          </table>
-          <div class="text-center">
-            {!! $categorias->render()!!}
-          </div>          
+          </table>                  
         </div>
+         <div class="text-center">
+            {!! $categorias->render()!!}
+          </div>
       </div>        
     </div>                                  
 @endsection

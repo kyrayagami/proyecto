@@ -80,8 +80,8 @@
     </ol>      -->
     <h1 align="left">@yield('title','default')</h1>
   </section>      
-  <section class="content">    
-  @include('flash::message')
+  <section class="content">     
+      @include('flash::message')    
   
     <!--
     <h1 align="center">Bienvenido al Administrador de horarios  Canal 10</h1>-->

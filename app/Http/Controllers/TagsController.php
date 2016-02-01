@@ -49,7 +49,7 @@ class TagsController extends Controller
     {
         $tag = Tag::find($id);
         $tag->delete();
-        Flash::error('Se elimino el Tag : '.$tag->nombre.' satisfactoriamente!!');
+        Flash::success('Se elimino el Tag : '.$tag->nombre.' satisfactoriamente!!');
         return redirect()->route('admin.tags.index');
     }
 }

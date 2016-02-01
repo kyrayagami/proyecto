@@ -51,7 +51,7 @@ class ConductoresController extends Controller
     {
         $conductor = Conductor::find($id);
         $conductor->delete();
-        Flash::error('Se elimnio el conductor : '.$conductor->nombre.' satisfactoriamente!!');
+        Flash::success('Se elimnio el conductor : '.$conductor->nombre.' satisfactoriamente!!');
         return redirect()->route('admin.conductores.index');
     }
 }

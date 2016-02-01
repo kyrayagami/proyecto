@@ -25,7 +25,7 @@ class ProgramasController extends Controller
             $programas->categoria;
             $programas->productor;
             //$programas->tags;
-        });
+        });        
         return view('admin.programas.index')
             ->with('programas', $programas);
     }
@@ -91,7 +91,7 @@ class ProgramasController extends Controller
     {
         $programa = Programa::find($id);
         $programa->delete();
-        Flash::error('Se elimino el programa : '.$programa->nombre.' satisfactoriamente!!');
+        Flash::success('Se elimino el programa : '.$programa->nombre.' satisfactoriamente!!');
         return redirect()->route('admin.programas.index');
     }
 }

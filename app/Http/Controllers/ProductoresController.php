@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Productor;
 use Laracasts\Flash\Flash;
 use Illuminate\Support\Facades\Redirect;
+use DB;
 
 
 class ProductoresController extends Controller
@@ -48,10 +49,17 @@ class ProductoresController extends Controller
 
     }
     public function destroy($id)
-    {
-    	$productor = Productor::find($id);
+    {        
+    	$productor = Productor::find($id);        
+        $ocupado = DB::table('programas')->leftjoin('productores','programas.productor_id','=',
+            'productores.id')->where('productores.id','=',$productor->id)->lists('programas.nombre','programas.id');
+        //dd($ocupado);
+        if($ocupado!=null){
+            Flash::error('El productor : '.$productor->nombre.' esta siendo usada por un programa!!');
+            return redirect()->route('admin.productores.index');
+        }
         $productor->delete();
-        Flash::error('Se elimino : '.$productor->nombre.' correctamente!!');
+        Flash::success('Se elimino : '.$productor->nombre.' correctamente!!');
         return redirect()->route('admin.productores.index');
     }
 }

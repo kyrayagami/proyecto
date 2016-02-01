@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Categoria;
 use Laracasts\Flash\Flash;
 use Illuminate\Support\Facades\Redirect;
+use DB;
 
 class CategoriasController extends Controller
 {
@@ -43,10 +44,19 @@ class CategoriasController extends Controller
     	return redirect()->route('admin.categorias.index');
     }
     public function destroy($id)
-    {
-    	$categoria = Categoria::find($id);
+    {        
+        // Select * from programas left join categorias on programas.categoria_id = 
+        // categorias.id where categorias.id =2
+        $categoria = Categoria::find($id);
+        $ocupado = DB::table('programas')->leftjoin('categorias','programas.categoria_id','=',
+            'categorias.id')->where('categorias.id','=',$categoria->id)->lists('programas.nombre','programas.id');
+        //dd($ocupado);
+        if($ocupado!=null){                        
+            Flash::error('La categoria : "'.$categoria->nombre.'" esta siendo usada por un programa');
+            return redirect()->route('admin.categorias.index');
+        }        
     	$categoria->delete();
-    	Flash::error('Se elimino la categoria : '.$categoria->nombre.' satisfactoriamente!!');
+    	Flash::success('Se elimino la categoria : '.$categoria->nombre.' satisfactoriamente!!');
     	return redirect()->route('admin.categorias.index');
     }
 }
