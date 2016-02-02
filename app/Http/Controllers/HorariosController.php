@@ -34,7 +34,7 @@ class HorariosController extends Controller
     {
         //dd($request);
         $horario = new Horario($request->all());
-        dd($horario);
+        //dd($horario);
         $horario->save();
         Flash::success('El horario se registro con exito!!');
         return redirect()->route('admin.horarios.index');
