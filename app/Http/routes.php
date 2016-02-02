@@ -63,4 +63,6 @@ Route::group(['prefix'=> 'admin','middleware' => 'web'], function(){
 		'as'	=> 'admin.tags.destroy'
 		]);
 
+	Route::resource('parrilla', 'ParrillaController');
+
 });

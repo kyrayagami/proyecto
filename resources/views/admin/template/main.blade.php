@@ -15,6 +15,14 @@
 	<link rel="stylesheet" href="{{asset('plugins/dist_admin/css/AdminLTE.min.css')}}">	
 	<link rel="stylesheet" href="{{asset('plugins/dist_admin/css/skins/_all-skins.min.css')}}">
 	<!--fin externos-->
+	
+	<!--links de la parrilla-->
+	<link rel="stylesheet" type="text/css" href="{{asset('plugins/archivos_admin/css_003.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('plugins/archivos_admin/css.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('plugins/archivos_admin/style_002.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('plugins/archivos_admin/bjqs.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('plugins/archivos_admin/css_002.css')}}">
+	<!---->
 
 </head>
 
@@ -37,6 +45,7 @@
 	<script src="{{asset('plugins/plugins_admin/slimScroll/jquery.slimscroll.min.js')}} "></script>
 	<script src="{{asset('plugins/plugins_admin/fastclick/fastclick.js')}} "></script>
 	<script src="{{asset('plugins/dist_admin/js/app.min.js')}} "></script>
+	<script src="{{asset('plugins/dist_admin/js/admin_horario.js')}} "></script>
 	<!--fin externos-->
 
 	<!--este llama al pluginchoosen no ingresado aun-->
