@@ -55,7 +55,7 @@ class HorariosController extends Controller
         //$conductores = Conductor::orderBy('id','DESC')->lists('nombre','id');
         //$mis_conductores = $programa->conductores->lists('id')->ToArray();
         return view('admin.horarios.edit')
-            ->with('programa',$programa)                    
+            ->with('programas',$programas)                    
             ->with('dias',$dias)                        
             ->with('horario',$horario);
     }

@@ -33,7 +33,7 @@
                   <td>{{$horario->hora_termino}}</td>
                   <td>{{$horario->tipo}}</td>                  
                   <td>{{$horario->tipo_audiencia}}</td>
-                  <td><a href="#"class="btn btn-warning"> <span class="glyphicon glyphicon-pencil"></span></a>
+                  <td> <a href="{{route('admin.horarios.edit',$horario->id)}}" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></a>
 
                   <a href="{{ route('admin.horarios.destroy',$horario->id) }}" class="btn btn-danger" onclick="return confirm('¿Seguro de eliminar este Horario?')"> <span class=" glyphicon glyphicon-remove-circle"></span> </a>
                   </td>
