@@ -29,7 +29,9 @@ class HorariosController extends Controller
 
     public function store(Request $request)
     {
+        //dd($request);
         $horario = new Horario($request->all());
+        dd($horario);
         $horario->save();
 
         Flash::success('La categoria  se registro con exito!!');

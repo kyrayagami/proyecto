@@ -36,12 +36,10 @@
                     {!! Form::label('tipo','Tipo de Transmision')!!}
                     {!! Form::select('tipo',['ENVIVO' => 'En vivo', 'ESTELAR' =>'Estelar','REPETICION' => 'Repeticion'],['class' => 'form-control'])!!}
                   </div>
-                  </div>
-
-                  <div class="form-group">
-                    {!! Form::label('descripcion','Contenido')!!}
+                   <div class="form-group">
+                    {!! Form::label('descripcion','Sipnosis')!!}
                     {!! Form::textarea('descripcion',null,['class' => 'form-control textarea-content'])!!}
-                  </div>              
+                  </div>                     
                   <div class="form-group">
                     {!! Form::label('tipo_audiencia','Tipo de Audiencia')!!}
                     {!! Form::select('tipo_audiencia',['A' => 'A', 'AA' =>'AA','AAA' => 'AAA'],['class' => 'form-control'])!!}
