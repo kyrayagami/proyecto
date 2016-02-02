@@ -17,7 +17,8 @@ class HorariosController extends Controller
     //
     public function index()
     {
-    	return view('admin.horarios.index');
+        $horarios = Horario::orderBy('id','DESC')->paginate(5);
+    	return view('admin.horarios.index')->with('horarios',$horarios);
     }
 
     public function create()
@@ -34,4 +35,13 @@ class HorariosController extends Controller
         Flash::success('La categoria  se registro con exito!!');
         return redirect()->route('admin.horarios.index');
     }
+
+    public function destroy($id)
+    {
+        $horario = Horario::find($id);
+        $horario->delete();
+        Flash::success('Se elimnio el conductor satisfactoriamente!!');
+        return redirect()->route('admin.horarios.index');
+    }
+
 }

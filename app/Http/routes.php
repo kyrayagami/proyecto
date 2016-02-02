@@ -51,7 +51,7 @@ Route::group(['prefix'=> 'admin','middleware' => 'web'], function(){
 	Route::get('programas/{id}/destroy',[
 		'uses' 	=> 'ProgramasController@destroy',
 		'as'	=> 'admin.programas.destroy'
-		]);
+		]); 
 	Route::resource('horarios', 'HorariosController');
 	Route::get('horarios/{id}/destroy',[
 		'uses' 	=> 'HorariosController@destroy',

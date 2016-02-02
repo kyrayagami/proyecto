@@ -5,7 +5,7 @@
 @section('content')
 	 <div class="col-xs-9">
     <div>
-      <a href="#" class="btn btn-info">Agregar nuevo Horario </a>
+      <a href="{{route('admin.horarios.create')}}" class="btn btn-info">Agregar nuevo Horario </a>
     </div>
   </div>        
   <div class="col-xs-12"> 
@@ -22,32 +22,30 @@
              <th>Hora de Termino</th>
              <th>Tipo</th>  
              <th>Descripcion</th>
-             <th>Tipo de Audiencia</th>                    
-             <th>Estatus</th>                      
+             <th>Tipo de Audiencia</th>                                         
              <th>Acciones</th> 
             </tr>  
           </thead>              
             <tbody>
-             
+              @foreach ($horarios as $horario )
                 <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>{{$horario->id}}</td>
+                  <td>{{$horario->hora_inicio}}</td>
+                  <td>{{$horario->hora_termino}}</td>
+                  <td>{{$horario->tipo}}</td>
+                  <td>{{$horario->descripcion}}</td>
+                  <td>{{$horario->tipo_audiencia}}</td>
                   <td><a href="#"class="btn btn-warning"> <span class="glyphicon glyphicon-pencil"></span></a>
 
-                  <a href="#" class="btn btn-danger" onclick="return confirm('¿Seguro de eliminar este Horario?')"> <span class=" glyphicon glyphicon-remove-circle"></span> </a>
+                  <a href="{{ route('admin.horarios.destroy',$horario->id) }}" class="btn btn-danger" onclick="return confirm('¿Seguro de eliminar este Horario?')"> <span class=" glyphicon glyphicon-remove-circle"></span> </a>
                   </td>
                 </tr>
-                           
+            @endforeach                   
             </tbody>
         </table>
       </div>
       <div class="text-center">
-          
+           {!! $horarios->render()!!}
       </div>
     </div>      
   </div>                        
