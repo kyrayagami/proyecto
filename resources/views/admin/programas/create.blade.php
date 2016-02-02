@@ -6,7 +6,7 @@
 @include('admin.template.partials.errors')
       <div class="row">
         <!-- left column -->
-        <div class="col-md-10">
+        <div class="col-md-6">
           <!-- general form elements  no borrar -->
           <div class="box box-primary">
             <div class="box-header with-border">

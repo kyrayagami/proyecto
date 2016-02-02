@@ -21,8 +21,8 @@ class AddHorariosTable extends Migration
             $table->text('tipo');
             $table->text('descripcion');            
             $table->text('tipo_audiencia');
-            $table->foreign('dia_id')->references('id')->on('dias')->onDelete('cascade');
-            $table->foreign('programa_id')->references('id')->on('programas')->onDelete('cascade');
+            $table->foreign('dia_id')->references('id')->on('dias');
+            $table->foreign('programa_id')->references('id')->on('programas');
             $table->timestamps();
         });
     }
