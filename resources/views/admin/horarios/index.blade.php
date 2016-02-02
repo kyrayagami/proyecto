@@ -17,11 +17,10 @@
         <table id="#" class="table table-bordered">          
           <thead>
             <tr>
-             <th>ID</th>
+             <th>Programa</th>
              <th>Hora de Inicio</th>
              <th>Hora de Termino</th>
-             <th>Tipo</th>  
-             <th>Descripcion</th>
+             <th>Tipo</th>               
              <th>Tipo de Audiencia</th>                                         
              <th>Acciones</th> 
             </tr>  
@@ -29,11 +28,10 @@
             <tbody>
               @foreach ($horarios as $horario )
                 <tr>
-                  <td>{{$horario->id}}</td>
+                  <td>{{$horario->programa->nombre}}</td>
                   <td>{{$horario->hora_inicio}}</td>
                   <td>{{$horario->hora_termino}}</td>
-                  <td>{{$horario->tipo}}</td>
-                  <td>{{$horario->descripcion}}</td>
+                  <td>{{$horario->tipo}}</td>                  
                   <td>{{$horario->tipo_audiencia}}</td>
                   <td><a href="#"class="btn btn-warning"> <span class="glyphicon glyphicon-pencil"></span></a>
 
