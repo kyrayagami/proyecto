@@ -22,7 +22,6 @@ class HorariosController extends Controller
         
     	return view('admin.horarios.index')->with('horarios',$horarios);
     }
-
     public function create()
     {	
     	$dias = Dia::orderBy('id','ASC')->lists('dia','id');
@@ -68,7 +67,7 @@ class HorariosController extends Controller
         $programa->save();
         //$programa->tags()->sync($request->tags);
         //$programa->conductores()->sync($request->conductores);
-        Flash::warning('El programa : '.$horario->programa->nombre. 'con horario de '.$horario->hora_inicio. 'a'.$horario->hora_termino .' se actualizo con exito!!!');
+        Flash::warning('El programa : '.$horario->programa->nombre. ' con horario de '.$horario->hora_inicio. 'a'.$horario->hora_termino .' se actualizo con exito!!!');
         return redirect()->route('admin.horarios.index');
     }
 
