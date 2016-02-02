@@ -59,7 +59,7 @@
           </a>
         </li> 
         <li>         
-          <a id="#" href="#">
+          <a id="#" href="{{route('admin.horarios.index')}}">
             <i class="fa fa-th"></i> 
             <span> Horarios de Programas</span>
           </a>

@@ -6,9 +6,10 @@
 @include('admin.template.partials.errors')
   <div class="row">
     <div class="col-md-6">
-    <!--
+  
       <div class="box box-primary">
-        <div class="box-header with-border">
+       <div class="box-body">  
+       <!-- <div class="box-header with-border">
           <h3 class="box-title">Agregar Categoria</h3>
         </div>
 
@@ -38,4 +39,5 @@
       </div>
     </div>
   </div>
+</div>
 @endsection
