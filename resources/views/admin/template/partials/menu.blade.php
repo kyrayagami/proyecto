@@ -11,7 +11,7 @@
       <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
         <li>
-          <a id="#" href="#">
+          <a id="#" href="{{route('admin.horarios.index')}}">
             <i class="fa fa-circle-o"></i> 
             <span>Administrar Horarios</span>
           </a>
@@ -53,13 +53,13 @@
           </a>
         </li>  
         <li>         
-          <a id="#" href="{{route('admin.tags.index')}}">
+          <a  href="{{route('admin.tags.index')}}">
             <i class="glyphicon glyphicon-tags"></i> 
             <span> Tags</span>
           </a>
         </li> 
         <li>         
-          <a id="#" href="{{route('admin.horarios.index')}}">
+          <a href="{{route('admin.parrilla.index')}}">
             <i class="fa fa-th"></i> 
             <span> Horarios de Programas</span>
           </a>

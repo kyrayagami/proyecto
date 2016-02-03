@@ -13,6 +13,8 @@ use App\Horario;
 use App\Dia;
 use App\Programa;
 
+
+
 class HorariosController extends Controller
 {
     //
@@ -34,8 +36,8 @@ class HorariosController extends Controller
     {
         //dd($request);
         $horario = new Horario($request->all());
-        $result =validar($horario->id_dia,$horario->hora_inicio,$horario->hora_termino);
-        if($result =='no'){
+        $resultado = getvalidar($horario->id_dia,$horario->hora_inicio,$horario->hora_termino);
+        if($resultado =='no'){
             $horario->save();
             Flash::success('El horario se registro con exito!!');
             return redirect()->route('admin.horarios.index');
@@ -83,7 +85,7 @@ class HorariosController extends Controller
         Flash::success('Se elimnio el horario satisfactoriamente!!');
         return redirect()->route('admin.horarios.index');
     }
-    public function validar($dia,$hora_inicio,$hora_termino)
+    private function getvalidar($dia,$hora_inicio,$hora_termino)
     {
         $hay_registro='';
         $verifica= Horario::orderBy('id','ASC')
