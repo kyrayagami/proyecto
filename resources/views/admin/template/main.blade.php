@@ -9,7 +9,6 @@
 
 	<!--inicio externos	-->
 	<link rel="stylesheet" href="{{asset('plugins/font-awesome-4.5.0/css/font-awesome.min.css')}}">
-	<link rel="stylesheet" href="{{asset('plugins/ionicons-2.0.1/css/ionicons.min.css')}}">
 	<link rel="stylesheet" href="{{asset('plugins/bootstrap_admin/css/bootstrap.min.css')}}">
 	<link rel="stylesheet" href="{{asset('plugins/plugins_admin/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}">
 	<link rel="stylesheet" href="{{asset('plugins/dist_admin/css/AdminLTE.min.css')}}">	
@@ -43,7 +42,7 @@
 
 	<script src="{{asset('plugins/bootstrap_admin/js/bootstrap.min.js')}} "></script>
 	<script src="{{asset('plugins/plugins_admin/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')}} "></script>
-	<<script src="{{asset('plugins/plugins_admin/slimScroll/jquery.slimscroll.min.js')}} "></script>
+	<script src="{{asset('plugins/plugins_admin/slimScroll/jquery.slimscroll.min.js')}} "></script>
 	<script src="{{asset('plugins/plugins_admin/fastclick/fastclick.js')}} "></script>
 	<script src="{{asset('plugins/dist_admin/js/app.min.js')}} "></script>
 	<!--fin externos-->
