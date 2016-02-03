@@ -34,10 +34,15 @@ class HorariosController extends Controller
     {
         //dd($request);
         $horario = new Horario($request->all());
-        //dd($horario);
-        $horario->save();
-        Flash::success('El horario se registro con exito!!');
-        return redirect()->route('admin.horarios.index');
+        $result =validar($horario->id_dia,$horario->hora_inicio,$horario->hora_termino);
+        if($result =='no'){
+            $horario->save();
+            Flash::success('El horario se registro con exito!!');
+            return redirect()->route('admin.horarios.index');
+        }
+        Flash::success('Ya hay un programa registrado con ese horario');
+        
+        //dd($horario);        
     }
 
     public function edit($id)
@@ -77,5 +82,115 @@ class HorariosController extends Controller
         $horario->delete();
         Flash::success('Se elimnio el horario satisfactoriamente!!');
         return redirect()->route('admin.horarios.index');
+    }
+    public function validar($dia,$hora_inicio,$hora_termino)
+    {
+        $hay_registro='';
+        $verifica= Horario::orderBy('id','ASC')
+            ->where('dia_id','=',$dia)
+            ->where('hora_inicio','<',$hora_inicio)
+            ->where('hora_termino','>',$hora_termino)->lists('programa_id');
+            if($verifica!=null){
+                $hay_registro='si';
+                return $hay_registro;
+            }
+        $verifica = Horario::orderBy('id','ASC')
+            ->where('dia_id','=',$dia)
+            ->whereBetween('hora_inicio',[$hora_inicio,$hora_termino]);
+            if($verifica!=null){
+                //$cont = $verifica.count();
+                $cont=1;
+                while ($verifica.count()>= $cont) {
+                    if($hora_termino == $verifica->hora_inicio){
+                        $hay_registro = 'no';
+                    }else{
+                        $hay_registro = 'si';
+                        return $hay_registro;
+                    }
+                    $cont++;
+                }
+            }else{
+                $hay_registro='no';
+            }
+
+        $verifica = Horario::orderBy('id','ASC')
+            ->where('dia_id','=',$dia)
+            ->whereBetween('hora_termino',[$hora_inicio,$hora_termino]);
+            if($verifica!=null){
+                //$cont = $verifica.count();
+                $cont=1;
+                while ($verifica.count()>= $cont) {
+                    if($hora_inicio == $verifica->hora_termino){
+                        $hay_registro = 'no';
+                    }else{
+                        $hay_registro = 'si';
+                        return $hay_registro;
+                    }
+                    $cont++;
+                }
+            }else{
+                $hay_registro='no';
+            }
+        return $hay_registro;            
+        /*        
+    $hay_registro='';
+    // valida que NO SE PUEDAN meter un nuevo horaro entre el rango horarios ya creado
+    $consulta=mysql_query("SELECT *  FROM horarios WHERE dia =".$dia."
+        AND hora_inicio < '".$hora_inicio."' AND hora_termino > '".$hora_termino."'");
+        if (mysql_num_rows($consulta)>0){                   
+            $hay_registro='si';
+            return $hay_registro;
+        }
+        else{
+            $hay_registro='no';
+        }
+
+        // valida que no se registre un horarios con hora inicio antes y la hora de termino 
+        //este dentro del rango de otro horarios ya registrado
+        $consulta2=mysql_query("SELECT *  FROM horarios WHERE dia =".$dia."
+            AND hora_inicio BETWEEN '".$hora_inicio."' AND '".$hora_termino."'");
+        // obtenemos la fila y se tiene que comparar la hora de termino del nuevo horarios con la fecha de inicio de la fila obtenida
+        if (mysql_num_rows($consulta2)>0){
+            while ($dato=mysql_fetch_array($consulta2)){
+                if($hora_termino ==  $dato["hora_inicio"]){
+                    $hay_registro='no';
+                }else{
+                    $hay_registro='si';
+                    return $hay_registro;
+                }               
+            }       
+        }
+        else{
+            $hay_registro='no';
+        }
+
+        // valida que no se registren horarioss con hora inicio con menos hora y la hora de termino despues de algun horarios registrado en la tabla de horarios
+        $consulta3=mysql_query("SELECT *  FROM horarios WHERE dia =".$dia."
+        AND hora_termino BETWEEN '".$hora_inicio."' AND '".$hora_termino."'");
+        // obtenemos la fila y se tiene que comparar la hora de inicio del nuevo horarios con la fecha de termino de la fila obtenida
+        if (mysql_num_rows($consulta3)>0){
+            while ($dato=mysql_fetch_array($consulta3)){
+                if($hora_inicio ==  $dato["hora_termino"]){
+                    $hay_registro='no';
+                }else{
+                    $hay_registro='si';
+                    return $hay_registro;
+                }               
+            }       
+        }
+        else{
+            $hay_registro='no';
+        }
+        return $hay_registro;
+        /*
+        // valida que no se incruste un horarios con hora Inicio un poco mas tarde y que su hora Termino termine un poco mas tarde que algun horarios que exista en la tabla horarios
+        $consulta=mysql_query("SELECT * FROM horarios WHERE dia =1
+        AND hora_inicio <  '12:15:00'
+        AND hora_termino between   '12:15:00'
+        AND '13:45:00'  ");
+        // obtenemos la fila y se tiene que comparar la hora de inicio del nuevo horarios con la hora_termino de la fila obtenida
+    
+        }
+        */
     }
 }

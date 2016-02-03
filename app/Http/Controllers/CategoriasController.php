@@ -48,11 +48,13 @@ class CategoriasController extends Controller
         // Select * from programas left join categorias on programas.categoria_id = 
         // categorias.id where categorias.id =2
         $categoria = Categoria::find($id);
-        $ocupado = DB::table('programas')->leftjoin('categorias','programas.categoria_id','=',
-            'categorias.id')->where('categorias.id','=',$categoria->id)->lists('programas.nombre','programas.id');
+        $ocupado = DB::table('programas')
+            ->leftjoin('categorias','programas.categoria_id','=',
+            'categorias.id')->where('categorias.id','=',$categoria->id)
+            ->lists('programas.nombre','programas.id');
         //dd($ocupado);
         if($ocupado!=null){                        
-            Flash::error('La categoria : "'.$categoria->nombre.'" esta siendo usada por un programa');
+            Flash::error('La categoria : "'.$categoria->nombre.'" esta siendo usada por un programa '.$ocupado[1]);
             return redirect()->route('admin.categorias.index');
         }        
     	$categoria->delete();
