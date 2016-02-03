@@ -22,6 +22,7 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('plugins/archivos_admin/style_002.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('plugins/archivos_admin/bjqs.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('plugins/archivos_admin/css_002.css')}}">
+	<link rel="stylesheet" type="text/css" media="all" href="{{asset('plugins/archivos_admin/jsDatePick_ltr.css')}}">
 	<!---->
 
 </head>
@@ -40,13 +41,18 @@
 	<script src="{{asset('plugins/trumbowyg/trumbowyg.js')}} "></script>
 	
 	<!--inicio scripts externos-->
+
 	<script src="{{asset('plugins/bootstrap_admin/js/bootstrap.min.js')}} "></script>
 	<script src="{{asset('plugins/plugins_admin/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')}} "></script>
 	<script src="{{asset('plugins/plugins_admin/slimScroll/jquery.slimscroll.min.js')}} "></script>
 	<script src="{{asset('plugins/plugins_admin/fastclick/fastclick.js')}} "></script>
 	<script src="{{asset('plugins/dist_admin/js/app.min.js')}} "></script>
-	<script src="{{asset('plugins/dist_admin/js/admin_horario.js')}} "></script>
 	<!--fin externos-->
+
+	<!--link parrilla-->
+	<link href="{{asset('plugins/archivos_admin/bjqs-1.js')}}">
+	<link href="{{asset('plugins/archivos_admin/organictabs.js')}}">
+	<!--fin parrilla-->
 
 	<!--este llama al pluginchoosen no ingresado aun-->
 	@yield('js')

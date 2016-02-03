@@ -55,17 +55,16 @@
                         <div id="prueba" align="center">      
                           <div class="list-wrap" align="center">                            
                             <ul style="position: relative; top: 0px; left: 0px; display: none;" id="manana" >
-                                                   
+                              <h3>manana</h3>          
                             </ul>                        
                             <!--- tarde -->
                             <ul id="tarde">
-                    
-                          
+                              <h3>tarde</h3>                         
                             </ul>  
                             <!--- noche -->     
                             <ul style="position: relative; top: 0px; left: 0px; display: none;" id="noche" >
-                             
-                              <!---->
+                              <h3>noche</h3>
+                            <!---->
                             </ul>
                           </div> <!-- END List Wrap -->    
                         </div> <!-- prueba -->
@@ -79,6 +78,23 @@
           <!-- box -->
         </div>
       </div>
-    </section>
+      </div>
+</section>
+
+@endsection
+
+@section('js')
+    <script type="text/javascript">
+        $(function() {
+    
+            $("#example-one").organicTabs();
+            
+            $("#example-two").organicTabs({
+                "speed": 200
+            });
+    
+        });
+    </script>
+
 
 @endsection
