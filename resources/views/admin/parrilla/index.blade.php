@@ -3,6 +3,8 @@
 @section('title', 'Parrila')
 
 @section('content')  
+
+ 
   <section class="content">    
       <div class="row">
         <div class="col-xs-3">                     
@@ -84,7 +86,8 @@
 @endsection
 
 @section('js')
-    <script type="text/javascript">
+
+    <script>
         $(function() {
     
             $("#example-one").organicTabs();
