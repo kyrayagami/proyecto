@@ -15,16 +15,15 @@
 	<link rel="stylesheet" href="{{asset('plugins/dist_admin/css/AdminLTE.min.css')}}">	
 	<link rel="stylesheet" href="{{asset('plugins/dist_admin/css/skins/_all-skins.min.css')}}">
 	<!--fin externos-->
-	
-	<!--links de la parrilla-->
-	<link rel="stylesheet" type="text/css" href="{{asset('plugins/archivos_admin/css_003.css')}}">
-	<link rel="stylesheet" type="text/css" href="{{asset('plugins/archivos_admin/css.css')}}">
-	<link rel="stylesheet" type="text/css" href="{{asset('plugins/archivos_admin/style_002.css')}}">
-	<link rel="stylesheet" type="text/css" href="{{asset('plugins/archivos_admin/bjqs.css')}}">
-	<link rel="stylesheet" type="text/css" href="{{asset('plugins/archivos_admin/css_002.css')}}">
-	<link rel="stylesheet" type="text/css" media="all" href="{{asset('plugins/archivos_admin/jsDatePick_ltr.css')}}">
-	<!---->
 
+ 	<!--links de la parrilla-->
+  	<link rel="stylesheet" type="text/css" href="{{asset('plugins/archivos_admin/css_003.css')}}">
+  	<link rel="stylesheet" type="text/css" href="{{asset('plugins/archivos_admin/css.css')}}">
+  	<link rel="stylesheet" type="text/css" href="{{asset('plugins/archivos_admin/style_002.css')}}">
+  	<link rel="stylesheet" type="text/css" href="{{asset('plugins/archivos_admin/bjqs.css')}}">
+  	<link rel="stylesheet" type="text/css" href="{{asset('plugins/archivos_admin/css_002.css')}}">
+
+  	<!---->
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -40,21 +39,20 @@
 	<script src="{{asset('plugins/chosen/chosen.jquery.js')}}"></script>
 	<script src="{{asset('plugins/trumbowyg/trumbowyg.js')}} "></script>
 	
-	<!--inicio scripts externos-->
+
 
 	<script src="{{asset('plugins/bootstrap_admin/js/bootstrap.min.js')}} "></script>
 	<script src="{{asset('plugins/plugins_admin/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')}} "></script>
-	<script src="{{asset('plugins/plugins_admin/slimScroll/jquery.slimscroll.min.js')}} "></script>
+	<<script src="{{asset('plugins/plugins_admin/slimScroll/jquery.slimscroll.min.js')}} "></script>
 	<script src="{{asset('plugins/plugins_admin/fastclick/fastclick.js')}} "></script>
 	<script src="{{asset('plugins/dist_admin/js/app.min.js')}} "></script>
 	<!--fin externos-->
+	
+	<script src="{{asset('plugins/archivos_admin/bjqs-1.js')}}"></script>
+	<script src="{{asset('plugins/archivos_admin/organictabs.js')}}"></script>
 
-	<!--link parrilla-->
-	<link href="{{asset('plugins/archivos_admin/bjqs-1.js')}}">
-	<link href="{{asset('plugins/archivos_admin/organictabs.js')}}">
-	<!--fin parrilla-->
-
-	<!--este llama al pluginchoosen no ingresado aun-->
+	
+	<!--este llama al js-->
 	@yield('js')
 	<!--termina-->
 </body>
