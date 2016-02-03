@@ -67,6 +67,5 @@ Route::group(['prefix'=> 'admin','middleware' => 'web'], function(){
 		]);
 
 	Route::resource('parrilla', 'ParrillaController');
-	
-
+	//Route::get('admin/horarios', 'HorariosController@getvalidar');	
 });

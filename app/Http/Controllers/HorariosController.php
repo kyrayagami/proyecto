@@ -17,7 +17,8 @@ use App\Programa;
 
 class HorariosController extends Controller
 {
-    //
+    //    
+    public $respuesta ='';
     public function index()
     {
         $horarios = Horario::orderBy('id','DESC')->paginate(5);
@@ -36,14 +37,61 @@ class HorariosController extends Controller
     {
         //dd($request);
         $horario = new Horario($request->all());
-        $resultado = getvalidar($horario->id_dia,$horario->hora_inicio,$horario->hora_termino);
+        $hay_registro = '';
+        $hay_registro2 = '';
+        $hay_registro3 = '';
+        $resultado='';
+        //dd($horario);
+        //$resultado = $this->getvalidar($horario->dia_id,$horario->hora_inicio,$horario->hora_termino);
+        dd($respuesta);
+        ////////////////////////////////////        
+        /*
+        $verifica= Horario::orderBy('id','ASC')->where('dia_id','=',$dia)->where('hora_inicio','<',$hora_inicio)
+            ->where('hora_termino','>',$hora_termino)->lists('programa_id');
+            if($verifica!=null){
+                $hay_registro='si';                
+            }
+        $verifica = Horario::orderBy('id','ASC')->where('dia_id','=',$dia)
+            ->whereBetween('hora_inicio',[$hora_inicio,$hora_termino]);
+            if($verifica!=null){                
+                $cont=1;
+                while ($verifica.count()>= $cont) {
+                    if($hora_termino == $verifica->hora_inicio)
+                        $hay_registro2 = 'no';
+                    else
+                        $hay_registro2 = 'si';                                            
+                    $cont++;
+                }
+            }else
+                $hay_registro='no';            
+
+        $verifica = Horario::orderBy('id','ASC')
+            ->where('dia_id','=',$dia)
+            ->whereBetween('hora_termino',[$hora_inicio,$hora_termino]);
+            if($verifica!=null){
+                //$cont = $verifica.count();
+                $cont=1;
+                while ($verifica.count()>= $cont) {
+                    if($hora_inicio == $verifica->hora_termino){
+                        $hay_registro3 = 'no';
+                    }else{
+                        $hay_registro3 = 'si';                        
+                    }
+                    $cont++;
+                }
+            }else{
+                $hay_registro='no';
+            }
+            */
+        //return $this->getvalidar($hay_registro);  
+
+        //////////////////////////////////////////////
         if($resultado =='no'){
             $horario->save();
             Flash::success('El horario se registro con exito!!');
             return redirect()->route('admin.horarios.index');
         }
-        Flash::success('Ya hay un programa registrado con ese horario');
-        
+        Flash::success('Ya hay un programa registrado con ese horario');        
         //dd($horario);        
     }
 
@@ -51,16 +99,9 @@ class HorariosController extends Controller
     {
         $horario = Horario::find($id);
         $horario ->programa();
-        $horario ->dia();
-        //$programa -> productor();
-
+        $horario ->dia();        
         $programas = Programa::orderBy('nombre','DESC')->lists('nombre','id');
-        $dias = Dia::orderBy('dia','ASC')->lists('dia','id');
-        //$tags = Tag::orderBy('id','DESC')->lists('nombre','id');
-        //$mis_tags = $programa->tags->lists('id')->ToArray();
-
-        //$conductores = Conductor::orderBy('id','DESC')->lists('nombre','id');
-        //$mis_conductores = $programa->conductores->lists('id')->ToArray();
+        $dias = Dia::orderBy('dia','ASC')->lists('dia','id');      
         return view('admin.horarios.edit')
             ->with('programas',$programas)                    
             ->with('dias',$dias)                        
@@ -85,7 +126,7 @@ class HorariosController extends Controller
         Flash::success('Se elimnio el horario satisfactoriamente!!');
         return redirect()->route('admin.horarios.index');
     }
-    private function getvalidar($dia,$hora_inicio,$hora_termino)
+    public function getvalidar($dia,$hora_inicio,$hora_termino)
     {
         $hay_registro='';
         $verifica= Horario::orderBy('id','ASC')
@@ -94,8 +135,9 @@ class HorariosController extends Controller
             ->where('hora_termino','>',$hora_termino)->lists('programa_id');
             if($verifica!=null){
                 $hay_registro='si';
-                return $hay_registro;
-            }
+                //$respuesta = 'si';
+                return $this->getvalidar($hay_registro,$dia,$hora_inicio,$hora_termino);
+            }/*
         $verifica = Horario::orderBy('id','ASC')
             ->where('dia_id','=',$dia)
             ->whereBetween('hora_inicio',[$hora_inicio,$hora_termino]);
@@ -107,7 +149,7 @@ class HorariosController extends Controller
                         $hay_registro = 'no';
                     }else{
                         $hay_registro = 'si';
-                        return $hay_registro;
+                        return $this->getvalidar($hay_registro);
                     }
                     $cont++;
                 }
@@ -126,14 +168,16 @@ class HorariosController extends Controller
                         $hay_registro = 'no';
                     }else{
                         $hay_registro = 'si';
-                        return $hay_registro;
+                        return $this->getvalidar($hay_registro);
                     }
                     $cont++;
                 }
             }else{
                 $hay_registro='no';
             }
-        return $hay_registro;            
+            */
+        return $this->getvalidar($hay_registro,$dia,$hora_inicio,$hora_termino);   
+    }         
         /*        
     $hay_registro='';
     // valida que NO SE PUEDAN meter un nuevo horaro entre el rango horarios ya creado
@@ -193,6 +237,5 @@ class HorariosController extends Controller
         // obtenemos la fila y se tiene que comparar la hora de inicio del nuevo horarios con la hora_termino de la fila obtenida
     
         }
-        */
-    }
+        */    
 }
