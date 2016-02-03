@@ -58,12 +58,8 @@
             <span> Tags</span>
           </a>
         </li> 
-        <li>         
-<<<<<<< HEAD
-          <a href="{{route('admin.parrilla.index')}}">
-=======
+        <li>                   
           <a id="#" href="{{route('admin.parrilla.index')}}">
->>>>>>> origin/master
             <i class="fa fa-th"></i> 
             <span> Horarios de Programas</span>
           </a>
