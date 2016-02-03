@@ -18,7 +18,12 @@ use App\Programa;
 class HorariosController extends Controller
 {
     //    
-    public $respuesta ='';
+    //public static $respuesta ='';
+     public function __construct()
+    {
+        $dt = '';
+        $this->respuesta = $dt;
+    }
     public function index()
     {
         $horarios = Horario::orderBy('id','DESC')->paginate(5);
@@ -39,11 +44,11 @@ class HorariosController extends Controller
         $horario = new Horario($request->all());
         $hay_registro = '';
         $hay_registro2 = '';
-        $hay_registro3 = '';
-        $resultado='';
+        $hay_registro3 = '';        
         //dd($horario);
-        //$resultado = $this->getvalidar($horario->dia_id,$horario->hora_inicio,$horario->hora_termino);
-        dd($respuesta);
+        $this->getvalidar($horario->dia_id,$horario->hora_inicio,$horario->hora_termino);
+        $resultado=$this->respuesta;
+        dd($resultado);
         ////////////////////////////////////        
         /*
         $verifica= Horario::orderBy('id','ASC')->where('dia_id','=',$dia)->where('hora_inicio','<',$hora_inicio)
@@ -133,10 +138,12 @@ class HorariosController extends Controller
             ->where('dia_id','=',$dia)
             ->where('hora_inicio','<',$hora_inicio)
             ->where('hora_termino','>',$hora_termino)->lists('programa_id');
-            if($verifica!=null){
+            //$verifica->
+            if($verifica->count()>0){
                 $hay_registro='si';
                 //$respuesta = 'si';
-                return $this->getvalidar($hay_registro,$dia,$hora_inicio,$hora_termino);
+                $this->respuesta='si';
+                return 0;
             }/*
         $verifica = Horario::orderBy('id','ASC')
             ->where('dia_id','=',$dia)
@@ -176,7 +183,8 @@ class HorariosController extends Controller
                 $hay_registro='no';
             }
             */
-        return $this->getvalidar($hay_registro,$dia,$hora_inicio,$hora_termino);   
+            $this->respuesta='no';
+        return 0;   
     }         
         /*        
     $hay_registro='';
