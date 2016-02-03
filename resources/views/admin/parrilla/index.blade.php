@@ -50,22 +50,74 @@
                           <li class="espacio-nav">&nbsp;</li>
                           <li class="nav-one"><a href="#manana">MAÑANA</a></li>
                           <li class="nav-two"><a href="#tarde" class="current" >TARDE</a></li>
-                          <li class="nav-three"><a href="#noche">NOCHE</a></li>                                                               
+                          <li class="nav-three"><a href="#noche">NOCHE</a></li>                                                     
                         </ul>   
-
-
                         <div id="prueba" align="center">      
                           <div class="list-wrap" align="center">                            
                             <ul style="position: relative; top: 0px; left: 0px; display: none;" id="manana" >
-                              <h3>manana</h3>          
+                              
+                              <li class="estilo_lista" onclick="show('layer1')"> 
+                                <b>11:00:52</b> &nbsp;&nbsp;&nbsp;mañana
+                                <div id="layer1" style="display: block;" class="layer"> 
+                                <img src="{{asset('plugins/dist_admin/img/photo3.jpg')}}" hspace="0" vspace="0" width="200" height="133" border="0">
+                                <img src="{{asset('plugins/dist_admin/img/flecha-left.png')}}" hspace="0" vspace="0" width="10" height="133" border="0">
+                                  <div class="sub-layer"> 
+                                    <p> 
+                                    <span class="c_tit">nombre</span>
+                                    <br> 
+                                    <span class="c_tit2">datos</span>
+                                    <br> 
+                                    <span class="c_tit2">datos</span>
+                                    <br>
+                                    </p>
+                                    <p></p>
+                                  </div> 
+                                  </div>
+                              </li>         
                             </ul>                        
                             <!--- tarde -->
                             <ul id="tarde">
-                              <h3>tarde</h3>                         
+                              <li class="estilo_lista" onclick="show('layer2')"> 
+                                <b>13:00:52</b> &nbsp;&nbsp;&nbsp;tarde
+                                <div id="layer2" style="display: none;" class="layer"> 
+                                <img src="{{asset('plugins/dist_admin/img/photo3.jpg')}}" hspace="0" vspace="0" width="200" height="133" border="0">
+                                <img src="{{asset('plugins/dist_admin/img/flecha-left.png')}}" hspace="0" vspace="0" width="10" height="133" border="0">
+                                  <div class="sub-layer"> 
+                                    <p> 
+                                    <span class="c_tit">nombre</span>
+                                    <br> 
+                                    <span class="c_tit2">datos</span>
+                                    <br> 
+                                    <span class="c_tit2">datos</span>
+                                    <br>
+                                    </p>
+                                    <p></p>
+                                  </div> 
+                                  </div>
+                              </li>         
+                            </ul>                       
                             </ul>  
                             <!--- noche -->     
                             <ul style="position: relative; top: 0px; left: 0px; display: none;" id="noche" >
-                              <h3>noche</h3>
+                            <li class="estilo_lista" onclick="show('layer3')"> 
+                                <b>11:00:52</b> &nbsp;&nbsp;&nbsp;noche
+                                <div id="layer3" style="display: none;" class="layer"> 
+                                <img src="{{asset('plugins/dist_admin/img/photo3.jpg')}}" hspace="0" vspace="0" width="200" height="133" border="0">
+                                <img src="{{asset('plugins/dist_admin/img/flecha-left.png')}}" hspace="0" vspace="0" width="10" height="133" border="0">
+                                  <div class="sub-layer"> 
+                                    <p> 
+                                    <span class="c_tit">nombre</span>
+                                    <br> 
+                                    <span class="c_tit2">datos</span>
+                                    <br> 
+                                    <span class="c_tit2">datos</span>
+                                    <br>
+                                    </p>
+                                    <p></p>
+                                  </div> 
+                                  </div>
+                              </li>         
+                            </ul> 
                             <!---->
                             </ul>
                           </div> <!-- END List Wrap -->    
@@ -98,6 +150,13 @@
     
         });
     </script>
+  <script>
+    function show(bloq) {
+      obj = document.getElementById(bloq);
+     obj.style.display = (obj.style.display=='none') ? 'block' : 'none';
+    }
+  </script>
+<!--fin del s
 
 
 @endsection

@@ -81,11 +81,7 @@
     <h1 align="left">@yield('title','default')</h1>
   </section>      
   <section class="content">     
-      @include('flash::message')    
-  
-    <!--
-    <h1 align="center">Bienvenido al Administrador de horarios  Canal 10</h1>-->
-    <!--llama al contenido para ingresar informacion-->    
+      @include('flash::message')      
     @yield('content')
     <!--finaliza-->
   </section>
