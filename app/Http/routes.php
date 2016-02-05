@@ -65,6 +65,7 @@ Route::group(['prefix'=> 'admin','middleware' => 'web'], function(){
 		'uses' => 'TagsController@destroy',
 		'as'   => 'admin.tags.destroy'
 		]);
+	Route::resource('horario_pdf', 'HorarioPDFController');
 
 	Route::resource('parrilla', 'ParrillaController');
 	Route::resource('lunes', 'LunesController');
@@ -75,6 +76,4 @@ Route::group(['prefix'=> 'admin','middleware' => 'web'], function(){
 	Route::resource('sabado', 'SabadoController');
 	Route::resource('domingo', 'DomingoController');
 	//Route::get('parrilla', 'ParrillaController');	
-
-
 });

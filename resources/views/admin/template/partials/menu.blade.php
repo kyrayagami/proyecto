@@ -47,7 +47,7 @@
           </a>
         </li>
         <li>         
-          <a id="#" href="#">
+          <a href="{{route('admin.horario_pdf.index')}}">
             <i class="fa fa-fw fa-file-archive-o"></i> 
             <span>Reporte Horarios</span>
           </a>

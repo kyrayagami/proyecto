@@ -1,9 +1,9 @@
 @extends('admin.template.main')
 
-@section('title', 'Horarios')
+@section('title', 'Vista de Horarios')
 
 @section('content')
-	 <div class="col-xs-9">
+   <div class="col-xs-9">
     <div>
       <a href="#" class="btn btn-info">Imprimir Horario </a>
     </div>
@@ -17,24 +17,25 @@
         <table id="thorario" class="table table-condensed">          
           <thead>
             <tr>
-              <th style="width: 10px">Horario</th>
+               <!-- <th style="width: 10px">Horario</th>-->
               <th>Lunes</th>                    
-              <th>Martes</th>                      
+              <th>Martes</th>    
+              <!--                  
               <th>Miercoles</th>
               <th>Jueves</th>
               <th>Viernes</th>
               <th>Sabado</th>
-              <th>Domingo</th>
+              <th>Domingo</th>-->
             </tr>  
           </thead>              
           <tbody id="lis_horario">
-            <?php                              
+            <?php                
               $conta=0;                
               while(count($contenido)>$conta){
                 echo $contenido[$conta];
                 $conta++;
               }
-              ?>
+            ?>
           </tbody>
         </table>
       </div>
