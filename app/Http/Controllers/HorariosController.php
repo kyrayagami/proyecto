@@ -26,9 +26,23 @@ class HorariosController extends Controller
     }
     public function index()
     {
-        $horarios = Horario::orderBy('id','DESC')->paginate(5);
-        
-    	return view('admin.horarios.index')->with('horarios',$horarios);
+        //$horarios = Horario::orderBy('dia_id','ASC')->orderBy('hora_inicio','ASC')->get();
+        $L= Horario::orderBy('hora_inicio','ASC')->where('dia_id','=','1')->get();
+        $M= Horario::orderBy('hora_inicio','ASC')->where('dia_id','=','2')->get();
+        $Mi= Horario::orderBy('hora_inicio','ASC')->where('dia_id','=','3')->get();
+        $J = Horario::orderBy('hora_inicio','ASC')->where('dia_id','=','4')->get();
+        $V= Horario::orderBy('hora_inicio','ASC')->where('dia_id','=','5')->get();
+        $S= Horario::orderBy('hora_inicio','ASC')->where('dia_id','=','6')->get();
+        $D= Horario::orderBy('hora_inicio','ASC')->where('dia_id','=','7')->get();
+        //dd($horarios->count());    
+    	return view('admin.horarios.index')->with('L',$L)
+            ->with('M',$M)
+            ->with('Mi',$Mi)
+            ->with('J',$J)
+            ->with('V',$V)
+            ->with('S',$S)
+            ->with('D',$D);
+
     }
     public function create()
     {	
@@ -42,61 +56,20 @@ class HorariosController extends Controller
     {
         //dd($request);
         $horario = new Horario($request->all());
-        $hay_registro = '';
+        /*$hay_registro = '';
         $hay_registro2 = '';
-        $hay_registro3 = '';        
+        $hay_registro3 = '';       */ 
         //dd($horario);
         $this->getvalidar($horario->dia_id,$horario->hora_inicio,$horario->hora_termino);
         $resultado=$this->respuesta;
-        dd($resultado);
-        ////////////////////////////////////        
-        /*
-        $verifica= Horario::orderBy('id','ASC')->where('dia_id','=',$dia)->where('hora_inicio','<',$hora_inicio)
-            ->where('hora_termino','>',$hora_termino)->lists('programa_id');
-            if($verifica!=null){
-                $hay_registro='si';                
-            }
-        $verifica = Horario::orderBy('id','ASC')->where('dia_id','=',$dia)
-            ->whereBetween('hora_inicio',[$hora_inicio,$hora_termino]);
-            if($verifica!=null){                
-                $cont=1;
-                while ($verifica.count()>= $cont) {
-                    if($hora_termino == $verifica->hora_inicio)
-                        $hay_registro2 = 'no';
-                    else
-                        $hay_registro2 = 'si';                                            
-                    $cont++;
-                }
-            }else
-                $hay_registro='no';            
-
-        $verifica = Horario::orderBy('id','ASC')
-            ->where('dia_id','=',$dia)
-            ->whereBetween('hora_termino',[$hora_inicio,$hora_termino]);
-            if($verifica!=null){
-                //$cont = $verifica.count();
-                $cont=1;
-                while ($verifica.count()>= $cont) {
-                    if($hora_inicio == $verifica->hora_termino){
-                        $hay_registro3 = 'no';
-                    }else{
-                        $hay_registro3 = 'si';                        
-                    }
-                    $cont++;
-                }
-            }else{
-                $hay_registro='no';
-            }
-            */
-        //return $this->getvalidar($hay_registro);  
-
-        //////////////////////////////////////////////
+        //dd($resultado);        
         if($resultado =='no'){
             $horario->save();
             Flash::success('El horario se registro con exito!!');
             return redirect()->route('admin.horarios.index');
         }
-        Flash::success('Ya hay un programa registrado con ese horario');        
+        Flash::error('Ya hay un programa registrado con ese horario');        
+        return redirect()->route('admin.horarios.index');
         //dd($horario);        
     }
 
@@ -133,58 +106,76 @@ class HorariosController extends Controller
     }
     public function getvalidar($dia,$hora_inicio,$hora_termino)
     {
-        $hay_registro='';
+        //$hay_registro='';
         $verifica= Horario::orderBy('id','ASC')
             ->where('dia_id','=',$dia)
             ->where('hora_inicio','<',$hora_inicio)
-            ->where('hora_termino','>',$hora_termino)->lists('programa_id');
+            ->where('hora_termino','>',$hora_termino)->lists('programa_id','id');
             //$verifica->
-            if($verifica->count()>0){
-                $hay_registro='si';
+            //dd($verifica->count());
+            $var=$verifica->count();
+            if($var>0){
+                //$hay_registro='si';
                 //$respuesta = 'si';
+                //dd('entro al primero');
                 $this->respuesta='si';
                 return 0;
-            }/*
-        $verifica = Horario::orderBy('id','ASC')
+            }
+        $verifica2 = Horario::orderBy('id','ASC')
             ->where('dia_id','=',$dia)
-            ->whereBetween('hora_inicio',[$hora_inicio,$hora_termino]);
-            if($verifica!=null){
+            ->whereBetween('hora_inicio',[$hora_inicio,$hora_termino])->lists('id','hora_inicio');                 
+            if($verifica->count()>0){
+                dd($verifica2->count());
                 //$cont = $verifica.count();
                 $cont=1;
-                while ($verifica.count()>= $cont) {
-                    if($hora_termino == $verifica->hora_inicio){
-                        $hay_registro = 'no';
+                while ($verifica2->count()>= $cont) {
+                    if($hora_termino == substr($verifica[0],0,5)){
+                        //$hay_registro = 'no';
+                        $this->respuesta='no';
                     }else{
-                        $hay_registro = 'si';
-                        return $this->getvalidar($hay_registro);
+                        //$hay_registro = 'si';
+                        //dd('entro al segundo');
+                        $this->respuesta='si';
+                        return 0;
                     }
                     $cont++;
                 }
             }else{
-                $hay_registro='no';
+                $this->respuesta='si';
             }
 
-        $verifica = Horario::orderBy('id','ASC')
+/*
+$consulta3=mysql_query("SELECT *  FROM horarios WHERE dia =".$dia."
+        AND hora_termino BETWEEN '".$hora_inicio."' AND '".$hora_termino."'");
+*/
+        $verifica3 = Horario::orderBy('id','ASC')
             ->where('dia_id','=',$dia)
-            ->whereBetween('hora_termino',[$hora_inicio,$hora_termino]);
-            if($verifica!=null){
+            ->whereBetween('hora_termino',[$hora_inicio,$hora_termino])->lists('hora_termino');
+            //dd($verifica3);  
+            if($verifica3->count()>0){
+                //dd('3');
                 //$cont = $verifica.count();
-                $cont=1;
-                while ($verifica.count()>= $cont) {
-                    if($hora_inicio == $verifica->hora_termino){
-                        $hay_registro = 'no';
+                //$cont=0;
+                //dd($verifica->hora_termino);
+                //while ($verifica->count()> $cont) {
+                //dd($hora_inicio . ' ------'.$verifica3[0]);
+                //$var = substr($verifica3[0],0,5);
+                //dd( $hora_inicio.' --'.$var);
+                    if($hora_inicio == substr($verifica3[0],0,5)){
+
+                        //$hay_registro = 'no';
+                        $this->respuesta='no';
                     }else{
-                        $hay_registro = 'si';
-                        return $this->getvalidar($hay_registro);
+                        //$hay_registro = 'si';
+                        //dd('entro al tercero');
+                        $this->respuesta='si';
+                        return 0;
                     }
-                    $cont++;
-                }
+                    //$cont++;
+                //}
             }else{
-                $hay_registro='no';
-            }
-            */
-            $this->respuesta='no';
-        return 0;   
+                $this->respuesta='no';
+            }            
     }         
         /*        
     $hay_registro='';
