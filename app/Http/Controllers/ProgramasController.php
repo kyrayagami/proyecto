@@ -65,7 +65,7 @@ class ProgramasController extends Controller
         $tags = Tag::orderBy('id','DESC')->lists('nombre','id');
         $mis_tags = $programa->tags->lists('id')->ToArray();
 
-        $conductores = Conductor::orderBy('id','DESC')->lists('nombre','id');
+        $conductores = Conductor::orderBy('id','DESC')->where('estatus','=','ACTIVO')->lists('nombre','id');
         $mis_conductores = $programa->conductores->lists('id')->ToArray();
         return view('admin.programas.edit')
             ->with('programa',$programa)

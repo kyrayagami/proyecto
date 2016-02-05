@@ -41,8 +41,8 @@
                     @foreach ($L as $lunes )
                       <tr>
                         <td>{{$lunes->programa->nombre}}</td>
-                        <td>{{$lunes->hora_inicio}}</td>
-                        <td>{{$lunes->hora_termino}}</td>
+                        <td>{{$lunes->hora_inicio}} hrs</td>
+                        <td>{{$lunes->hora_termino}} hrs</td>
                         <td>{{$lunes->tipo}}</td>
                         <td>{{$lunes->tipo_audiencia}}</td>
                         <td> <a href="{{route('admin.horarios.edit',$lunes->id)}}" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></a>
@@ -55,7 +55,7 @@
                 </table>
               </div>              
                       
-              <div class="tab-pane active" id="tab_2">
+              <div class="tab-pane" id="tab_2">
                 <table class="table table-bordered">
                   <thead>
                     <tr>                      
@@ -85,7 +85,7 @@
                 </table>
               </div>       
               
-               <div class="tab-pane active" id="tab_3">
+               <div class="tab-pane" id="tab_3">
                 <table class="table table-bordered">
                   <thead>
                     <tr>                      
@@ -115,7 +115,7 @@
                 </table>
               </div>      
              
-               <div class="tab-pane active" id="tab_4">
+               <div class="tab-pane" id="tab_4">
                 <table class="table table-bordered">
                   <thead>
                     <tr>                      
@@ -145,7 +145,7 @@
                 </table>
               </div>   
 
-               <div class="tab-pane active" id="tab_5">
+               <div class="tab-pane" id="tab_5">
                 <table class="table table-bordered">
                   <thead>
                     <tr>                      
@@ -175,7 +175,7 @@
                 </table>
               </div>      
               
-               <div class="tab-pane active" id="tab_6">
+               <div class="tab-pane" id="tab_6">
                 <table class="table table-bordered">
                   <thead>
                     <tr>                      
@@ -205,7 +205,7 @@
                 </table>
               </div>  
 
-               <div class="tab-pane active" id="tab_7">
+               <div class="tab-pane" id="tab_7">
                 <table class="table table-bordered">
                   <thead>
                     <tr>                      

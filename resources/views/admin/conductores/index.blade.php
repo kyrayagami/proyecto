@@ -18,19 +18,17 @@
       <div class="box-body table-responsive no-padding">
         <table id="#" class="table table-bordered">          
           <thead>
-            <tr>
-             <th>ID</th>
+            <tr>             
              <th>Nombre</th>
              <th>Correo</th>
              <th>Perfil</th>                                   
              <th>Estatus</th>                      
-             <th>Acciones</th> 
+             <th style="width: 100px">Acciones</th> 
             </tr>  
           </thead>              
             <tbody>
               @foreach ($conductores as $conductor )
-                <tr>
-                  <td>{{$conductor->id}}</td>
+                <tr>                  
                   <td>{{$conductor->nombre}}</td>
                   <td>{{$conductor->correo}}</td>
                   <td>{{$conductor->perfil}}</td>
@@ -48,7 +46,5 @@
           {!! $conductores->render()!!}
       </div>
     </div>      
-  </div>                                   
-
-   
+  </div>
 @endsection
