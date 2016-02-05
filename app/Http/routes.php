@@ -62,10 +62,19 @@ Route::group(['prefix'=> 'admin','middleware' => 'web'], function(){
 		]);
 	Route::resource('tags', 'TagsController');
 	Route::get('tags/{id}/destroy',[
-		'uses' 	=> 'TagsController@destroy',
-		'as'	=> 'admin.tags.destroy'
+		'uses' => 'TagsController@destroy',
+		'as'   => 'admin.tags.destroy'
 		]);
 
 	Route::resource('parrilla', 'ParrillaController');
-	//Route::get('admin/horarios', 'HorariosController@getvalidar');	
+	Route::resource('lunes', 'LunesController');
+	Route::resource('martes', 'MartesController');
+	Route::resource('miercoles', 'MiercolesController');
+	Route::resource('jueves', 'JuevesController');
+	Route::resource('viernes', 'ViernesController');
+	Route::resource('sabado', 'SabadoController');
+	Route::resource('domingo', 'DomingoController');
+	//Route::get('parrilla', 'ParrillaController');	
+
+
 });

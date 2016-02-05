@@ -81,7 +81,7 @@
     <h1 align="left">@yield('title','default')</h1>
   </section>      
   <section class="content">     
-      @include('flash::message')      
+    @include('flash::message')      
     @yield('content')
     <!--finaliza-->
   </section>

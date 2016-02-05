@@ -6,13 +6,13 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+
 use App\Horario;
 use App\Dia;
 
-class ParrillaController extends Controller
+class ViernesController extends Controller
 {
-    //
-    public function index()
+       public function index()
     {
     	$L= Horario::orderBy('hora_inicio','ASC')->where('dia_id','=','1')->get();
         $M= Horario::orderBy('hora_inicio','ASC')->where('dia_id','=','2')->get();
@@ -22,7 +22,7 @@ class ParrillaController extends Controller
         $S= Horario::orderBy('hora_inicio','ASC')->where('dia_id','=','6')->get();
         $D= Horario::orderBy('hora_inicio','ASC')->where('dia_id','=','7')->get();
         //dd($horarios->count());    
-    	return view('admin.parrilla.index')
+    	return view('admin.viernes.index')
             ->with('L',$L)
             ->with('M',$M)
             ->with('Mi',$Mi)
@@ -31,7 +31,4 @@ class ParrillaController extends Controller
             ->with('S',$S)
             ->with('D',$D);    	
     }
-
-
-
 }

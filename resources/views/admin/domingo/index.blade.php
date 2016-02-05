@@ -1,6 +1,6 @@
 @extends('admin.template.main')
 
-@section('title', 'Parrila')
+@section('title', 'Domingo')
 
 @section('content')  
 
@@ -13,7 +13,6 @@
             </div>
             <div class="box-body">
                   <div id="external-events">
-
                     <form method="post" action="" id="frm_dias" name="frm_dias" >
                       <button onClick=" window.location.href='{{route('admin.domingo.index')}}' " type="button" class="btn btn-block bg-yellow btn-default">Domingo</button>
                       <button onClick=" window.location.href='{{route('admin.lunes.index')}}' " type="button" class="btn btn-block bg-green btn-default">Lunes</button>   

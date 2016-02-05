@@ -1,6 +1,6 @@
 @extends('admin.template.main')
 
-@section('title', 'Parrila')
+@section('title', 'Viernes')
 
 @section('content')  
 
@@ -13,15 +13,13 @@
             </div>
             <div class="box-body">
                   <div id="external-events">
-
-                    <form method="post" action="" id="frm_dias" name="frm_dias" >
                       <button onClick=" window.location.href='{{route('admin.domingo.index')}}' " type="button" class="btn btn-block bg-yellow btn-default">Domingo</button>
                       <button onClick=" window.location.href='{{route('admin.lunes.index')}}' " type="button" class="btn btn-block bg-green btn-default">Lunes</button>   
                       <button onClick=" window.location.href='{{route('admin.martes.index')}}' " type="button" class="btn btn-block bg-aqua btn-default">Martes</button>
                       <button onClick=" window.location.href='{{route('admin.miercoles.index')}}' " type="button" class="btn btn-block bg-light-blue btn-default">Miercoles</button>
                       <button onClick=" window.location.href='{{route('admin.jueves.index')}}' " type="button" class="btn btn-block bg-red btn-default">Jueves</button>
                       <button onClick=" window.location.href='{{route('admin.viernes.index')}}' " type="button" class="btn btn-block bg-purple btn-default">Viernes</button>
-                      <button onClick=" window.location.href='{{route('admin.sabado.index')}}' " type="button" class="btn btn-block bg-orange btn-default">Sabado</button>    
+                      <button onClick=" window.location.href='{{route('admin.sabado.index')}}' " type="button" class="btn btn-block bg-orange btn-default">Sabado</button>   
                     </form>                                                      
                   </div>
             </div>
