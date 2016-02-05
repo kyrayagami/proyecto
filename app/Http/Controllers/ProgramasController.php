@@ -35,8 +35,8 @@ class ProgramasController extends Controller
         $categorias = Categoria::orderBy('nombre','ASC')->lists('nombre','id');
 
         $tags = Tag::orderBy('nombre','ASC')->lists('nombre','id');
-        $productores = Productor::orderBy('nombre','ASC')->lists('nombre','id');
-        $conductores = Conductor::orderBy('nombre','ASC')->lists('nombre','id');
+        $productores = Productor::orderBy('nombre','ASC')->where('estatus','=','ACTIVO')->lists('nombre','id');
+        $conductores = Conductor::orderBy('nombre','ASC')->where('estatus','=','ACTIVO')->lists('nombre','id');
     	return view('admin.programas.create')
             ->with('conductores',$conductores)
             ->with('productores',$productores)
@@ -61,7 +61,7 @@ class ProgramasController extends Controller
         $programa -> productor();
 
         $categorias = Categoria::orderBy('nombre','DESC')->lists('nombre','id');
-        $productores = Productor::orderBy('nombre','ASC')->lists('nombre','id');
+        $productores = Productor::orderBy('nombre','ASC')->where('estatus','=','ACTIVO')->lists('nombre','id');
         $tags = Tag::orderBy('id','DESC')->lists('nombre','id');
         $mis_tags = $programa->tags->lists('id')->ToArray();
 

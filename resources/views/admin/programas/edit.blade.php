@@ -60,7 +60,11 @@
                     {!! Form::label('tags','Tags')!!}
                     {!! Form::select('tags[]',$tags,$mis_tags,['class' => 'form-control select-tag','multiple','required'])!!}
                   </div>
-                 
+
+                  <div class="form-group">
+                    {!! Form::label('estatus','Estatus')!!}
+                    {!! Form::select('estatus',['INACTIVO' => 'Inactivo', 'ACTIVO' =>'Activo'],$programa->estatus,['class' => 'form-control'])!!}
+                  </div>
                   <div class="box-footer">
                     <button type="submit" class="btn btn-primary">Actualizar</button>
                   </div>

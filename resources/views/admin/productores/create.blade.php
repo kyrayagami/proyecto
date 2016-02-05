@@ -24,7 +24,7 @@
                   </div>
 
                   <div class="form-group">
-                    {!! Form::label('perfil','Contenido')!!}
+                    {!! Form::label('perfil','Perfil')!!}
                     {!! Form::textarea('perfil',null,['class' => 'form-control textarea-content'])!!}
                   </div>              
                   <div class="form-group">
