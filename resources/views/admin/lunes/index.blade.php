@@ -47,7 +47,8 @@
                           <li class="nav-one"><a href="#manana">MAÑANA</a></li>
                           <li class="nav-two"><a href="#tarde" class="current" >TARDE</a></li>
                           <li class="nav-three"><a href="#noche">NOCHE</a></lu>                                         
-                        </ul>             
+                        </ul> 
+                        <?php $acu=0; ?>            
                         <div id="prueba" align="center">      
                           <div class="list-wrap" align="center"> 
                             <ul style="position: relative; top: 0px; left: 0px; display: none;" id="manana" >

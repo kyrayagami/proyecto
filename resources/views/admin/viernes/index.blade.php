@@ -13,13 +13,14 @@
             </div>
             <div class="box-body">
                   <div id="external-events">
+                    <form method="post" action="" id="frm_dias" name="frm_dias" >
                       <button onClick=" window.location.href='{{route('admin.domingo.index')}}' " type="button" class="btn btn-block bg-yellow btn-default">Domingo</button>
                       <button onClick=" window.location.href='{{route('admin.lunes.index')}}' " type="button" class="btn btn-block bg-green btn-default">Lunes</button>   
                       <button onClick=" window.location.href='{{route('admin.martes.index')}}' " type="button" class="btn btn-block bg-aqua btn-default">Martes</button>
                       <button onClick=" window.location.href='{{route('admin.miercoles.index')}}' " type="button" class="btn btn-block bg-light-blue btn-default">Miercoles</button>
                       <button onClick=" window.location.href='{{route('admin.jueves.index')}}' " type="button" class="btn btn-block bg-red btn-default">Jueves</button>
                       <button onClick=" window.location.href='{{route('admin.viernes.index')}}' " type="button" class="btn btn-block bg-purple btn-default">Viernes</button>
-                      <button onClick=" window.location.href='{{route('admin.sabado.index')}}' " type="button" class="btn btn-block bg-orange btn-default">Sabado</button>   
+                      <button onClick=" window.location.href='{{route('admin.sabado.index')}}' " type="button" class="btn btn-block bg-orange btn-default">Sabado</button>    
                     </form>                                                      
                   </div>
             </div>
@@ -46,70 +47,93 @@
                           <li class="nav-one"><a href="#manana">MAÑANA</a></li>
                           <li class="nav-two"><a href="#tarde" class="current" >TARDE</a></li>
                           <li class="nav-three"><a href="#noche">NOCHE</a></lu>                                         
-                        </ul>             
+                        </ul> 
+                        <?php $acu=0; ?>            
                         <div id="prueba" align="center">      
                           <div class="list-wrap" align="center"> 
                             <ul style="position: relative; top: 0px; left: 0px; display: none;" id="manana" >
-                              <li class="estilo_lista" onclick="show('layer1')"> 
-                              @foreach($L as $lu)
-                                <b>{{$lu->hora_inicio}}</b> &nbsp;&nbsp;&nbsp;Nombre
-                                <div id="layer1" style="display: block;" class="layer"> 
+                              @foreach($V as $vi)
+                              <?php $acu = $acu+1; $la="layer".$acu; $muestra= "show('layer".$acu."')";?>
+                              <?php $hora=str_replace(":", "", $vi->hora_inicio)?>
+                              @if($hora<115959)
+                              <li class="estilo_lista" onclick="{{$muestra}}"> 
+                                <b>{{$vi->hora_inicio}}</b> &nbsp;&nbsp;&nbsp;{{$vi->programa->nombre}}
+                                <div id="{{$la}}" style="display: block;" class="layer"> 
                                 <img src="{{asset('plugins/dist_admin/img/photo3.jpg')}}" hspace="0" vspace="0" width="200" height="133" border="0">
                                 <img src="{{asset('plugins/dist_admin/img/flecha-left.png')}}" hspace="0" vspace="0" width="10" height="133" border="0">
                                   <div class="sub-layer"> 
                                     <p> 
-                                    <span class="c_tit">nombre</span>
+                                    <span class="c_tit">{{$vi->programa->nombre}}</span>
                                     <br> 
-                                    <span class="c_tit2">{{$lu->tipo}}</span>
+                                    <span class="c_tit2">{{$vi->tipo}}</span>
                                     <br> 
-                                    <span class="c_tit2">{{$lu->tipo_audiencia}}</span>
+                                    <span class="c_tit2">{{$vi->programa->descripcion}}</span>
                                     <br>
                                     </p>
                                     <p></p>
                                   </div> 
-                                  </div>
-                              @endforeach
-                              </li>         
+                                </div>
+                              </li> 
+                                 
+                              @endif
+                              @endforeach     
                             </ul> 
-                            <ul id="tarde">
-                              <li class="estilo_lista" onclick="show('layer2')"> 
-                                <b>13:00:52</b> &nbsp;&nbsp;&nbsp;tarde
-                                <div id="layer2" style="display: none;" class="layer"> 
+                            <ul id="tarde">  
+
+                             @foreach($V as $vi)
+                              <?php $acu = $acu+1; $la="layer".$acu; $muestra= "show('layer".$acu."')";?>
+                              <?php $hora=str_replace(":", "", $vi->hora_inicio)?>
+                              @if($hora>=120000 && $hora<=185959)
+
+                              <li class="estilo_lista" onclick="{{$muestra}}"> 
+                                <b>{{$vi->hora_inicio}}</b> &nbsp;&nbsp;&nbsp;{{$vi->programa->nombre}}
+                                <div id="{{$la}}" style="display: none;" class="layer"> 
                                 <img src="{{asset('plugins/dist_admin/img/photo3.jpg')}}" hspace="0" vspace="0" width="200" height="133" border="0">
                                 <img src="{{asset('plugins/dist_admin/img/flecha-left.png')}}" hspace="0" vspace="0" width="10" height="133" border="0">
                                   <div class="sub-layer"> 
                                     <p> 
-                                    <span class="c_tit">nombre</span>
+                                    <span class="c_tit">{{$vi->programa->nombre}}</span>
                                     <br> 
-                                    <span class="c_tit2">datos</span>
+                                    <span class="c_tit2">{{$vi->tipo}}</span>
                                     <br> 
-                                    <span class="c_tit2">datos</span>
+                                    <span class="c_tit2">{{$vi->programa->descripcion}}</span>
                                     <br>
                                     </p>
                                     <p></p>
                                   </div> 
                                   </div>
-                              </li>         
+                              </li>  
+
+                              @endif
+                              @endforeach        
                             </ul>  
                           <ul style="position: relative; top: 0px; left: 0px; display: none;" id="noche" >
-                            <li class="estilo_lista" onclick="show('layer3')"> 
-                                <b>11:00:52</b> &nbsp;&nbsp;&nbsp;noche
-                                <div id="layer3" style="display: none;" class="layer"> 
+                            @foreach($V as $vi)
+                              <?php $acu = $acu+1; $la="layer".$acu; $muestra= "show('layer".$acu."')";?>
+                              <?php $hora=str_replace(":", "", $vi->hora_inicio)?>
+                              @if($hora>=190000 && $hora<=235959)
+
+                            <li class="estilo_lista" onclick="{{$muestra}}">
+                                <b>{{$vi->hora_inicio}}</b> &nbsp;&nbsp;&nbsp;{{$vi->programa->nombre}}
+                                <div id="{{$la}}" style="display: none;" class="layer"> 
                                 <img src="{{asset('plugins/dist_admin/img/photo3.jpg')}}" hspace="0" vspace="0" width="200" height="133" border="0">
                                 <img src="{{asset('plugins/dist_admin/img/flecha-left.png')}}" hspace="0" vspace="0" width="10" height="133" border="0">
                                   <div class="sub-layer"> 
                                     <p> 
-                                    <span class="c_tit">nombre</span>
+                                    <span class="c_tit">{{$vi->programa->nombre}}</span>
                                     <br> 
-                                    <span class="c_tit2">datos</span>
+                                    <span class="c_tit2">{{$vi->tipo}}</span>
                                     <br> 
-                                    <span class="c_tit2">datos</span>
+                                    <span class="c_tit2">{{$vi->programa->descripcion}}</span>
                                     <br>
                                     </p>
                                     <p></p>
                                   </div> 
                                   </div>
-                              </li>         
+                              </li>  
+                              @endif
+                              @endforeach   
+       
                             </ul> 
                           </div>
                         </div>
