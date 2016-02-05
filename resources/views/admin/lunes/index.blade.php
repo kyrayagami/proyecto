@@ -51,66 +51,88 @@
                         <div id="prueba" align="center">      
                           <div class="list-wrap" align="center"> 
                             <ul style="position: relative; top: 0px; left: 0px; display: none;" id="manana" >
-                              <li class="estilo_lista" onclick="show('layer1')"> 
                               @foreach($L as $lu)
-                                <b>{{$lu->hora_inicio}}</b> &nbsp;&nbsp;&nbsp;Nombre
-                                <div id="layer1" style="display: block;" class="layer"> 
+                              <?php $acu = $acu+1; $la="layer".$acu; $muestra= "show('layer".$acu."')";?>
+                              <?php $hora=str_replace(":", "", $lu->hora_inicio)?>
+                              @if($hora<115959)
+                              <li class="estilo_lista" onclick="{{$muestra}}"> 
+                                <b>{{$lu->hora_inicio}}</b> &nbsp;&nbsp;&nbsp;{{$lu->programa->nombre}}
+                                <div id="{{$la}}" style="display: block;" class="layer"> 
                                 <img src="{{asset('plugins/dist_admin/img/photo3.jpg')}}" hspace="0" vspace="0" width="200" height="133" border="0">
                                 <img src="{{asset('plugins/dist_admin/img/flecha-left.png')}}" hspace="0" vspace="0" width="10" height="133" border="0">
                                   <div class="sub-layer"> 
                                     <p> 
-                                    <span class="c_tit">nombre</span>
+                                    <span class="c_tit">{{$lu->programa->nombre}}</span>
                                     <br> 
                                     <span class="c_tit2">{{$lu->tipo}}</span>
                                     <br> 
-                                    <span class="c_tit2">{{$lu->tipo_audiencia}}</span>
+                                    <span class="c_tit2">{{$lu->programa->descripcion}}</span>
                                     <br>
                                     </p>
                                     <p></p>
                                   </div> 
-                                  </div>
-                              @endforeach
-                              </li>         
+                                </div>
+                              </li> 
+                                 
+                              @endif
+                              @endforeach     
                             </ul> 
-                            <ul id="tarde">
-                              <li class="estilo_lista" onclick="show('layer2')"> 
-                                <b>13:00:52</b> &nbsp;&nbsp;&nbsp;tarde
-                                <div id="layer2" style="display: none;" class="layer"> 
+                            <ul id="tarde">  
+
+                             @foreach($L as $lu)
+                              <?php $acu = $acu+1; $la="layer".$acu; $muestra= "show('layer".$acu."')";?>
+                              <?php $hora=str_replace(":", "", $lu->hora_inicio)?>
+                              @if($hora>=120000 && $hora<=185959)
+
+                              <li class="estilo_lista" onclick="{{$muestra}}"> 
+                                <b>{{$lu->hora_inicio}}</b> &nbsp;&nbsp;&nbsp;{{$lu->programa->nombre}}
+                                <div id="{{$la}}" style="display: none;" class="layer"> 
                                 <img src="{{asset('plugins/dist_admin/img/photo3.jpg')}}" hspace="0" vspace="0" width="200" height="133" border="0">
                                 <img src="{{asset('plugins/dist_admin/img/flecha-left.png')}}" hspace="0" vspace="0" width="10" height="133" border="0">
                                   <div class="sub-layer"> 
                                     <p> 
-                                    <span class="c_tit">nombre</span>
+                                    <span class="c_tit">{{$lu->programa->nombre}}</span>
                                     <br> 
-                                    <span class="c_tit2">datos</span>
+                                    <span class="c_tit2">{{$lu->tipo}}</span>
                                     <br> 
-                                    <span class="c_tit2">datos</span>
+                                    <span class="c_tit2">{{$lu->programa->descripcion}}</span>
                                     <br>
                                     </p>
                                     <p></p>
                                   </div> 
                                   </div>
-                              </li>         
+                              </li>  
+
+                              @endif
+                              @endforeach        
                             </ul>  
                           <ul style="position: relative; top: 0px; left: 0px; display: none;" id="noche" >
-                            <li class="estilo_lista" onclick="show('layer3')"> 
-                                <b>11:00:52</b> &nbsp;&nbsp;&nbsp;noche
-                                <div id="layer3" style="display: none;" class="layer"> 
+                            @foreach($L as $lu)
+                              <?php $acu = $acu+1; $la="layer".$acu; $muestra= "show('layer".$acu."')";?>
+                              <?php $hora=str_replace(":", "", $lu->hora_inicio)?>
+                              @if($hora>=190000 && $hora<=235959)
+
+                            <li class="estilo_lista" onclick="{{$muestra}}">
+                                <b>{{$lu->hora_inicio}}</b> &nbsp;&nbsp;&nbsp;{{$lu->programa->nombre}}
+                                <div id="{{$la}}" style="display: none;" class="layer"> 
                                 <img src="{{asset('plugins/dist_admin/img/photo3.jpg')}}" hspace="0" vspace="0" width="200" height="133" border="0">
                                 <img src="{{asset('plugins/dist_admin/img/flecha-left.png')}}" hspace="0" vspace="0" width="10" height="133" border="0">
                                   <div class="sub-layer"> 
                                     <p> 
-                                    <span class="c_tit">nombre</span>
+                                    <span class="c_tit">{{$lu->programa->nombre}}</span>
                                     <br> 
-                                    <span class="c_tit2">datos</span>
+                                    <span class="c_tit2">{{$lu->tipo}}</span>
                                     <br> 
-                                    <span class="c_tit2">datos</span>
+                                    <span class="c_tit2">{{$lu->programa->descripcion}}</span>
                                     <br>
                                     </p>
                                     <p></p>
                                   </div> 
                                   </div>
-                              </li>         
+                              </li>  
+                              @endif
+                              @endforeach   
+       
                             </ul> 
                           </div>
                         </div>
