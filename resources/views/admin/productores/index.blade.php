@@ -6,6 +6,14 @@
   <div class="col-xs-9">
     <div>
       <a href="{{ route('admin.productores.create')}}" class="btn btn-success">Agregar nuevo Productor</a>
+      <!-- Buscador-->
+          {!! Form::open(['route' => 'admin.productores.index', 'method'=>'GET','class' => 'navbar-form pull-right'])!!}
+          <div class="input-group">
+          {!!Form::text('nombre',null,['class'=> 'form-control','placeholder'=> 'Buscar productor...','aria-describedby'=>'search'])!!}
+            <span class="input-group-addon" id="search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>      
+          </div>      
+          {!! Form::close()!!}
+        <!-- Fin del buscador-->
     </div>
   </div>        
   <div class="col-xs-12"> 

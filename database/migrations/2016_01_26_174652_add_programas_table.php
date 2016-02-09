@@ -16,6 +16,7 @@ class AddProgramasTable extends Migration
             $table->increments('id');
             $table->string('nombre');            
             $table->string('estatus');
+            $table->string('correo');
             $table->string('descripcion_breve');
             $table->string('logo');
             $table->string('img_programa');

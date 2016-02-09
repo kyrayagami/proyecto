@@ -14,9 +14,10 @@ use Illuminate\Support\Facades\Redirect;
 class ConductoresController extends Controller
 {
     //
-    public function index()
+    public function index(Request $request)
     {
-    	$conductores = Conductor::orderBy('id','DESC')->paginate(5);
+        //$articles = Article::search($request->title)->orderBy('id','DESC')->paginate(5);
+    	$conductores = Conductor::search($request->nombre)->orderBy('id','DESC')->paginate(5);
     	return view('admin.conductores.index')->with('conductores',$conductores);
     }
 

@@ -18,9 +18,10 @@ use Illuminate\Support\Facades\Redirect;
 class ProgramasController extends Controller
 {
     //
-    public function index()    
-    {
-    	$programas = Programa::orderBy('id', 'DESC')->paginate(5);
+    public function index(Request $request)    
+    {        
+    	//$programas = Programa::orderBy('id', 'DESC')->paginate(5);
+        $programas = Programa::search($request->nombre)->orderBy('id', 'DESC')->paginate(5);
         $programas->each(function($programas){
             $programas->categoria;
             $programas->productor;

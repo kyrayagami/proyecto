@@ -15,9 +15,9 @@ use DB;
 class ProductoresController extends Controller
 {
     //
-    public function index()
+    public function index(Request $request)
     {
-        $productores = Productor::orderBy('id','DESC')->paginate(5);
+        $productores = Productor::search($request->nombre)->orderBy('id','DESC')->paginate(5);
     	return view('admin.productores.index')->with('productores',$productores);
     }
 

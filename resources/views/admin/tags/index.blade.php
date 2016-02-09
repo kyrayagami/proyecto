@@ -3,10 +3,18 @@
 @section('title', 'Tags')
 
 @section('content')
-<div class="col-xs-9">
+    <div class="col-xs-9">
       <div>          
           <a href="{{ route('admin.tags.create')}}" class="btn btn-primary"> Agregar nuevo tag</a>
-      </div>
+          <!-- Buscador-->
+          {!! Form::open(['route' => 'admin.tags.index', 'method'=>'GET','class' => 'navbar-form pull-right'])!!}
+          <div class="input-group">
+          {!!Form::text('nombre',null,['class'=> 'form-control','placeholder'=> 'Buscar tag...','aria-describedby'=>'search'])!!}
+            <span class="input-group-addon" id="search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>      
+          </div>      
+          {!! Form::close()!!}
+          <!-- Fin del buscador-->
+      </div>      
     </div>        
     <div class="col-xs-12"> 
       <div class="box">

@@ -13,4 +13,9 @@ class Productor extends Model
     {
     	return $this->hasMany('App\Programa');
     }
+
+    public function scopeSearch($query, $nombre)
+    {
+        return $query->where('nombre','LIKE',"%$nombre%");
+    }
 }

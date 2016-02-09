@@ -27,7 +27,12 @@
               <th>Domingo</th>
             </tr> 
           </thead>              
-          <tbody id="lis_horario">          
+          <tbody id="lis_horario">
+          @foreach ($horarios as $horario)
+            <tr>
+              <td>{{$horario->programa->nombre}} , {{$horario->hora_inicio}}, {{$horario->hora_termino}}, dia = {{$horario->dia_id}}</td>
+            </tr>
+          @endforeach
             <?php                   
             $inicio=0;
             $termino=$inicio+10000;
@@ -37,7 +42,7 @@
               foreach ($horarios as $horario){                
                 $h_ini=str_replace(":","",$horario->hora_inicio);
                 $h_end=str_replace(":","",$horario->hora_termino);                
-                if($h_ini>=$termino){  
+                if($h_ini>=$termino){ 
                   $inicio=$inicio+10000;
                   $termino=$inicio+10000;
                   while($dia<=7){
@@ -47,19 +52,28 @@
                   echo "</tr>";
                   //empieza una nueva hora
                   $dia=1;
+                  echo "<tr><td>".$inicio."</td>";                                  
+                }
+                while($h_ini>=$termino){
+                  $inicio=$inicio+10000;
+                  $termino=$inicio+10000;
+                  echo "<td>vacio1</td> <td>vacio2</td> <td>vacio3</td> <td>vacio4</td> <td>vacio5</td> <td>vacio6</td> <td>vacio7</td> </tr>";
+                  echo "</tr>";
+                  //empieza una nueva hora
+                  //$dia=1;
                   echo "<tr><td>".$inicio."</td>";
                 }
-
-                if($h_ini>=$inicio && $h_end<=$termino){
+                if($h_ini>=$inicio){
                   //echo '<tr>';
                   while($horario->dia_id>=$dia){
                     if($dia==$horario->dia_id){
-                      echo "<td>".$horario->programa->nombre. ' -> '.$horario->hora_inicio."</td>";
+                      echo "<td>".$horario->programa->nombre. '-'.$horario->hora_termino."</td>";
                       $dia++;
                       break;
                     }
                     else{ 
-                      echo "<td>vacio</td>";
+                      echo "<td>vacio".$dia."</td>";
+                      //echo "<td></td>";
                       $dia++;
                     }
                   }

@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Redirect;
 class TagsController extends Controller
 {
     //
-    public function index()
-    {
-        $tags = Tag::orderBy('id','DESC')->paginate(5);
+    public function index(Request $request)
+    {        
+        $tags = Tag::search($request->nombre)->orderBy('id','DESC')->paginate(5);
     	return view('admin.tags.index')->with('tags',$tags);
     }
 

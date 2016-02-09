@@ -8,6 +8,14 @@
   <div class="col-xs-9">
     <div>
       <a href="{{ route ('admin.conductores.create')}}" class="btn btn-info">Agregar nuevo Conductor </a>
+      <!-- Buscador-->
+          {!! Form::open(['route' => 'admin.conductores.index', 'method'=>'GET','class' => 'navbar-form pull-right'])!!}
+          <div class="input-group">
+          {!!Form::text('nombre',null,['class'=> 'form-control','placeholder'=> 'Buscar conductor...','aria-describedby'=>'search'])!!}
+            <span class="input-group-addon" id="search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>      
+          </div>      
+          {!! Form::close()!!}
+        <!-- Fin del buscador-->
     </div>
   </div>        
   <div class="col-xs-12"> 

@@ -38,4 +38,9 @@ class Programa extends Model
     {
         return $this->belongsToMany('App\Tag');
     }
+
+     public function scopeSearch($query, $nombre)
+    {
+        return $query->where('nombre','LIKE',"%$nombre%");
+    }
 }
