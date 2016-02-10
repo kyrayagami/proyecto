@@ -87,7 +87,7 @@
                               @foreach($V as $vi)
                               <?php $acu = $acu+1; $la="layer".$acu; $muestra= "show('layer".$acu."')";?>
                               <?php $hora=str_replace(":", "", $vi->hora_inicio)?>
-                              @if($hora>=120000 && $hora<=1859599)  
+                              @if($hora>=120000 && $hora<=185959)  
                               <li class="estilo_lista" onclick="{{$muestra}}"> 
                                 <b>{{$vi->hora_inicio}}</b> &nbsp;&nbsp;&nbsp;{{$vi->programa->nombre}}
                                 <div id="{{$la}}" style="display: none;" class="layer"> 
