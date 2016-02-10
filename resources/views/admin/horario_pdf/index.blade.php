@@ -1,20 +1,14 @@
-@extends('admin.template.main')
+      <style>
+        table {
+          border-collapse: collapse;
+        } 
 
-@section('title', 'Vista de Horarios')
+        table, td, th {
+          border: 1px solid black;
+        }
+      </style>
 
-@section('content')
-   <div class="col-xs-9">
-    <div>
-      <a href="#" class="btn btn-info">Imprimir Horario </a>
-    </div>
-  </div>        
-  <div class="col-xs-12"> 
-    <div class="box">
-      <div class="box-header">
-        <h3 class="box-title">Horario de Programación</h3>
-      </div>       
-      <div class="box-body table-responsive no-padding">            
-        <table id="thorario" class="table table-condensed">          
+ <table id="thorario" class="table table-condensed">          
           <thead>
             <tr>
               <th style="width: 20px">Horario</th>
@@ -31,7 +25,8 @@
           <!--<tr>
             <td rowspan="2" align="center">00:00</td>
           </tr>-->
-          <?php             
+          <?php
+                       
             $dia=1;
             $inicio=0;
             $termino=$inicio+10000;
@@ -43,7 +38,7 @@
               foreach ($horarios as $horario){              
                 $h_ini=str_replace(":","",$horario->hora_inicio);
                 $h_end=str_replace(":","",$horario->hora_termino);
-                if($horario->tipo == "en vivo") $tipo = "V";
+                if($horario->tipo == "vivo") $tipo = "V";
                 if($horario->tipo == "estelar") $tipo = "E";
                 if($horario->tipo == "repeticion") $tipo = "R";                
                 if($dia==7)
@@ -84,8 +79,4 @@
                        
           ?>
           </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-@endsection
+        </table>        

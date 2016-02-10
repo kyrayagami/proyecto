@@ -76,4 +76,5 @@ Route::group(['prefix'=> 'admin','middleware' => 'web'], function(){
 	Route::resource('sabado', 'SabadoController');
 	Route::resource('domingo', 'DomingoController');
 	//Route::get('parrilla', 'ParrillaController');	
+	Route::resource('impresion', 'ImpresionController');
 });
