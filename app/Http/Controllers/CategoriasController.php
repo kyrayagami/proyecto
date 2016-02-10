@@ -54,7 +54,7 @@ class CategoriasController extends Controller
             ->lists('programas.nombre','programas.id');
         //dd($ocupado);
         if($ocupado!=null){                        
-            Flash::error('La categoria : "'.$categoria->nombre.'" esta siendo usada por un programa '.$ocupado[1]);
+            Flash::error('La categoria : "'.$categoria->nombre.'" esta siendo usada por uno programa o más programas');
             return redirect()->route('admin.categorias.index');
         }        
     	$categoria->delete();

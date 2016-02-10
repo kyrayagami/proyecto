@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Conductor;
 use Laracasts\Flash\Flash;
 use Illuminate\Support\Facades\Redirect;
+use DB;
 
 class ConductoresController extends Controller
 {

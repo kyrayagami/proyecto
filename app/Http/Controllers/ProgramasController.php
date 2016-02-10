@@ -14,6 +14,7 @@ use App\Productor;
 use App\Tag;
 use Laracasts\Flash\Flash;
 use Illuminate\Support\Facades\Redirect;
+use DB;
 
 class ProgramasController extends Controller
 {
@@ -91,6 +92,16 @@ class ProgramasController extends Controller
     public function destroy($id)
     {
         $programa = Programa::find($id);
+        $ocupado = DB::table('horarios')
+            ->leftjoin('programas','horarios.programa_id','=',
+            'programas.id')->where('programas.id','=',$programa->id)
+            ->lists('horarios.id','horarios.dia_id');
+        //dd($ocupado);
+        if($ocupado!=null){                        
+            Flash::error('El programa : "'.$programa->nombre.'" esta siendo usado dentro de la parrilla de programacion');
+            return redirect()->route('admin.programas.index');
+        }                    
+        
         $programa->delete();
         Flash::success('Se elimino el programa : '.$programa->nombre.' satisfactoriamente!!');
         return redirect()->route('admin.programas.index');

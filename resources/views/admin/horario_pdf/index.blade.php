@@ -17,7 +17,7 @@
         <table id="thorario" class="table table-condensed">          
           <thead>
             <tr>
-              <th style="width: 10px">Horario</th>
+              <th style="width: 20px">Horario</th>
               <th>Lunes</th>                    
               <th>Martes</th>                  
               <th>Miercoles</th>
@@ -28,67 +28,64 @@
             </tr> 
           </thead>              
           <tbody id="lis_horario">
-          @foreach ($horarios as $horario)
-            <tr>
-              <td>{{$horario->programa->nombre}} , {{$horario->hora_inicio}}, {{$horario->hora_termino}}, dia = {{$horario->dia_id}}</td>
-            </tr>
-          @endforeach
-            <?php                   
+          <!--<tr>
+            <td rowspan="2" align="center">00:00</td>
+          </tr>-->
+          <?php             
+            $dia=1;
             $inicio=0;
             $termino=$inicio+10000;
-            $dia=1;
-            echo "<tr> <td>".$inicio."</td>";
-            // un while para que imprima todas las horas
-              foreach ($horarios as $horario){                
+            $hora=0;
+            $filas=1;
+            $tipo="";
+            $tipo_hora="am";
+            echo '<tr> <td rowspan="2" align="center"> 12:00 am</td>';
+              foreach ($horarios as $horario){              
                 $h_ini=str_replace(":","",$horario->hora_inicio);
-                $h_end=str_replace(":","",$horario->hora_termino);                
-                if($h_ini>=$termino){ 
-                  $inicio=$inicio+10000;
-                  $termino=$inicio+10000;
-                  while($dia<=7){
-                    echo "<td>vacio</td>";
+                $h_end=str_replace(":","",$horario->hora_termino);
+                if($horario->tipo == "en vivo") $tipo = "V";
+                if($horario->tipo == "estelar") $tipo = "E";
+                if($horario->tipo == "repeticion") $tipo = "R";                
+                if($dia==7)
+                {
+                  echo '</tr> <tr>';
+                }                  
+                if($h_ini<$termino){                
+                /*while ($horario->dia_id>$dia){                    
+                    echo "<td>vacio </td>";
                     $dia++;
+                  }*/
+                  if($h_end>=$termino){
+                    $filas++;
                   }
-                  echo "</tr>";
-                  //empieza una nueva hora
-                  $dia=1;
-                  echo "<tr><td>".$inicio."</td>";                                  
-                }
-                while($h_ini>=$termino){
-                  $inicio=$inicio+10000;
-                  $termino=$inicio+10000;
-                  echo "<td>vacio1</td> <td>vacio2</td> <td>vacio3</td> <td>vacio4</td> <td>vacio5</td> <td>vacio6</td> <td>vacio7</td> </tr>";
-                  echo "</tr>";
-                  //empieza una nueva hora
-                  //$dia=1;
-                  echo "<tr><td>".$inicio."</td>";
-                }
-                if($h_ini>=$inicio){
-                  //echo '<tr>';
-                  while($horario->dia_id>=$dia){
-                    if($dia==$horario->dia_id){
-                      echo "<td>".$horario->programa->nombre. '-'.$horario->hora_termino."</td>";
-                      $dia++;
-                      break;
-                    }
-                    else{ 
-                      echo "<td>vacio".$dia."</td>";
-                      //echo "<td></td>";
-                      $dia++;
-                    }
-                  }
+                  echo '<td rowspan="'.$filas.'" align="center" >'.$horario->programa->nombre. '  ('.$tipo.')</td>';
+                  $dia=$horario->dia_id;
+                  $filas=1;
                 }
                 else{
-                  //echo "<td>vacio</td> <td>vacio</td> <td>vacio</td> <td>vacio</td> <td>vacio</td> <td>vacio</td> <td>vacio</td> </tr>";
-                  echo "<td>Todo vacio </td></tr>";
-                  $dia=8;
-                }                
-              }         
-            ?>
+                  $hora++;
+                  if($hora==12){
+                    $tipo_hora='pm';                    
+                  }
+                  if($hora>12)
+                    $hora=1;                  
+                  echo '</tr> <tr> <td rowspan="2" align="center"> '.$hora.':00 '.$tipo_hora.'</td>';
+                  $filas=1; $dia=1;
+                  $inicio=$inicio+10000;
+                  $termino=$inicio+10000;
+                  if($h_ini<$termino){                    
+                    if($h_end>=$termino){
+                      $filas++;
+                    }
+                    echo '<td rowspan="'.$filas.'" align="center">'.$horario->programa->nombre.'  ('.$tipo.')</td>';
+                  }
+                }
+              }
+                       
+          ?>
           </tbody>
         </table>
       </div>
-    </div>      
-  </div>                        
-   
+    </div>
+  </div>
 @endsection

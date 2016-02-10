@@ -24,7 +24,8 @@
         <div class="box-body table-responsive no-padding">            
           <table id="#" class="table table-bordered">          
             <thead>
-               <tr>                            
+               <tr>         
+                 <th>ID</th>                  
                  <th>Nombre</th>                      
                  <th>Descripcion breve</th>                 
                  <th>Categoria</th>
@@ -37,6 +38,7 @@
                <tbody>
                   @foreach ($programas as $programa)
                     <tr>
+                        <td>{{ $programa->id}}</td>
                         <td>{{ $programa->nombre}}</td>
                         <td>{{ $programa->descripcion_breve}}</td>
                         <td>{{ $programa->categoria->nombre}}</td>
