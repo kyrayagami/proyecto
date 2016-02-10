@@ -1,14 +1,16 @@
-      <style>
+<style>
         table {
           border-collapse: collapse;
+          font-size: 12
         } 
 
         table, td, th {
           border: 1px solid black;
         }
+
       </style>
 
- <table id="thorario" class="table table-condensed">          
+ <table id="thorario">          
           <thead>
             <tr>
               <th style="width: 20px">Horario</th>
@@ -26,7 +28,7 @@
             <td rowspan="2" align="center">00:00</td>
           </tr>-->
           <?php
-                       
+            $contenido='';                    
             $dia=1;
             $inicio=0;
             $termino=$inicio+10000;
@@ -79,4 +81,4 @@
                        
           ?>
           </tbody>
-        </table>        
+        </table>           
