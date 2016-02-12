@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('validacion');
 });
 Route::get('/admin', function () {
     return view('welcome');

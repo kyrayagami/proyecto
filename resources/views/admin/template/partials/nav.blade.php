@@ -1,7 +1,7 @@
 <body class="hold-transition skin-blue sidebar-mini top">
   <div class="wrapper">
     <header class="main-header">
-      <a href="/" class="logo">
+      <a href="#" class="logo">
         <span class="logo-mini"><b>A</b>C10</span>
         <span class="logo-lg"><b>Admin</b>C10</span>
       </a>

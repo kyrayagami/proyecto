@@ -24,7 +24,8 @@ class ImpresionController extends Controller
     public function index()    
     {
         $horarios= Horario::orderBy('hora_inicio','ASC')->orderBy('dia_id','ASC')->get();
-        $contenido='<style>table {font-size: 9} td,th { border: 1px solid black;} td {padding: 0px;margin: 0px; }</style>
+        $filas='';
+        $contenido='<html><style>table {font-size: 9;} td,th { border: 1px solid black;} td {padding: 0px;margin: 0px; }</style>
         <table id="thorario" style="width:100%">          
           <thead>
             <tr>

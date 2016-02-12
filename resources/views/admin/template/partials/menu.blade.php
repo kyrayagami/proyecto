@@ -47,7 +47,7 @@
           </a>
         </li>
         <li>         
-          <a href="{{route('admin.horario_pdf.index')}}">
+          <a href="admin/impresion">
             <i class="fa fa-fw fa-file-archive-o"></i> 
             <span>Reporte Horarios</span>
           </a>
@@ -70,14 +70,6 @@
 
 <div class="content-wrapper" name="div_dinamico" id="div_dinamico">
   <section class="content-header">  
-  <!--
-    <h1>Dashboard
-      <small>Control panel</small>
-    </h1>
-    <ol class="breadcrumb">
-      <li><a><i class="fa fa-dashboard"></i> Home</a></li>
-      <li class="active">Dashboard</li>
-    </ol>      -->
     <h1 align="left">@yield('title','default')</h1>
   </section>      
   <section class="content">     
