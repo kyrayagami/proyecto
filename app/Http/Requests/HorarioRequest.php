@@ -23,7 +23,9 @@ class HorarioRequest extends Request
      */
     public function rules()
     {
-        return [            
+        return [
+            'hora_inicio' => 'required',
+            'hora_termino' => 'required',
         ];
     }
 }

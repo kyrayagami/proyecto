@@ -26,11 +26,11 @@
                   </div>
                   <div class="form-group">
                     {!! Form::label('hora_inicio','Hora de Inicio')!!}
-                    {!! Form::time('hora_inicio',null,['class' => 'form-control'])!!}
+                    {!! Form::time('hora_inicio',null,['class' => 'form-control','required'])!!}
                   </div> 
                   <div class="form-group">
                     {!! Form::label('hora_termino','Hora de Temrino')!!}
-                    {!! Form::time('hora_termino',null,['class' => 'form-control'])!!}
+                    {!! Form::time('hora_termino',null,['class' => 'form-control','required'])!!}
                   </div>                
                   <div class="form-group">
                     {!! Form::label('tipo','Tipo')!!}
