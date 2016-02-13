@@ -47,7 +47,7 @@
           </a>
         </li>
         <li>         
-          <a href="admin/impresion">
+          <a href="{{route('admin.impresion.index')}}">
             <i class="fa fa-fw fa-file-archive-o"></i> 
             <span>Reporte Horarios</span>
           </a>

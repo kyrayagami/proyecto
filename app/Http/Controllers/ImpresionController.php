@@ -25,8 +25,8 @@ class ImpresionController extends Controller
     {
         $horarios= Horario::orderBy('hora_inicio','ASC')->orderBy('dia_id','ASC')->get();
         $filas='';
-        $contenido='<html><style>table {font-size: 9;} td,th { border: 1px solid black;} td {padding: 0px;margin: 0px; }</style>
-        <table id="thorario" style="width:100%">          
+        $contenido='<html><style>table {font-size: 13;} td,tr{ border: 1px solid black;} td {padding: 0px;margin: 0px; }</style>
+        <table id="thorario" style="width:100% height:100%">          
           <thead>
             <tr>
               <th>Hora</th>
@@ -105,8 +105,8 @@ class ImpresionController extends Controller
         */
         //$this->pdf->setPaper('A4','landscape');
         $this->pdf->load($html);
-        //$this->pdf->filename('my_pdf.pdf');               
-        $this->pdf->setPaper('A3','landscape');
+        $this->pdf->filename('Horarios_Canal_10.pdf');
+        $this->pdf->setPaper('A2','landscape');
         return $this->pdf->show(); // 顯示
         //return $this->pdf->download(); // 下載
         //return $this->pdf->load($html)->show();

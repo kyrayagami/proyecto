@@ -1,19 +1,22 @@
-<style>
-        table {
+<style>        table {
           border-collapse: collapse;
-          font-size: 12
+          font-size: 9;
         } 
 
         table, td, th {
           border: 1px solid black;
         }
+        td{
+          font-size: 8;
+        }
 
       </style>
-
- <table id="thorario">          
+<head>Horarios Canal 10</head>
+<title>Horarios Canal 10</title>
+ <table id="thorario" border-collapse="collapse" width="100%">
           <thead>
             <tr>
-              <th style="width: 20px">Horario</th>
+              <th style="width: 60px">Hora</th>
               <th>Lunes</th>                    
               <th>Martes</th>                  
               <th>Miercoles</th>
