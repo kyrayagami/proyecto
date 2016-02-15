@@ -58,8 +58,11 @@
             <span> Tags</span>
           </a>
         </li> 
-        <li>                   
-          <a id="#" href="{{route('admin.parrilla.index')}}">
+        <li>    
+        <?php
+          $dia=date('w');
+        ?>               
+          <a id="#" href="{{route('admin.parrilla.edit',$dia)}}">
             <i class="fa fa-th"></i> 
             <span> Horarios de Programas</span>
           </a>
