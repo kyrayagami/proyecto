@@ -22,7 +22,7 @@ class HorariosController extends Controller
     }
     public function index()
     {
-        //$horarios = Horario::orderBy('dia_id','ASC')->orderBy('hora_inicio','ASC')->get();
+        //$horarios = Horario::orderBy('dia_id','ASC')->orderBy('hora_inicio','ASC')->get();        
         $L= Horario::orderBy('hora_inicio','ASC')->where('dia_id','=','1')->get();
         $M= Horario::orderBy('hora_inicio','ASC')->where('dia_id','=','2')->get();
         $Mi= Horario::orderBy('hora_inicio','ASC')->where('dia_id','=','3')->get();

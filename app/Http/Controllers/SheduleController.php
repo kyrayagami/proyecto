@@ -19,7 +19,7 @@ class SheduleController extends Controller
     public function allPrograms(){
 
     	 $program = $this->recentProgram();
-    	 $programas = $this->getAllProgram($this->getHorarios($this->getHora()->id_hora));
+    	 $programas = $this->getAllProgram($this->getHorarios($this->getHora()));
          $horarios =  $this->getHorarios($this->getHora()->id_hora);
          $horas = $this->getAllProgramHoras($this->getHorarios($this->getHora()->id_hora));
          $this->layout->content = View::make('index', array('program' => $program, 'programas' => $programas,'horarios' => $horarios,'horas'=> $horas));
@@ -41,7 +41,7 @@ class SheduleController extends Controller
     }
 
     public function acontinuacion(){
-       $programas = $this->getAllProgramService($this->getHorarios($this->getHora()->id_hora));
+        $programas = $this->getAllProgramService($this->getHorarios($this->getHora()->id_hora));
         return array('programas' => $programas);
     }
 
@@ -92,7 +92,7 @@ class SheduleController extends Controller
     }
 	  $horario = DB::table('horarios')
                     ->where('id_dia', $dia)
-                    ->where('id_hora_inicio',$hora)
+                    ->where('hora_inicio','>',$hora)
                     ->first();
 	   return $horario;    
     }
@@ -100,23 +100,23 @@ class SheduleController extends Controller
 
     private function getHorarios($hora)
     {
-	  $dia=date('w');
-    if ($dia == '0') {
-      $dia='7';
-      # code...
-    }
+	   $dia=date('w');
+        if ($dia == '0') {
+            $dia='7';      
+        }
 
-	  $horarios = DB::table('horarios')
-                    ->where('id_dia', $dia)
-                    ->where('id_hora_inicio','>=',$hora)
-                    ->groupBy('id_programa')
-                    ->orderBy('id_hora_inicio', 'asc')
+	   $horarios = DB::table('horarios')
+                    ->where('dia_id', $dia)
+                    ->where('hora_inicio','>=',$hora)
+                    ->groupBy('programa_id')
+                    ->orderBy('hora_inicio', 'asc')
                     ->get();
 	   return $horarios;    
     }
 
     private function getHora()
     {
+    /*
       $h = idate('i');
  	  $hr_mx = strtotime(date("H:i", strtotime(date("H:i", time()))));
 	  if ($h < '30')
@@ -126,18 +126,21 @@ class SheduleController extends Controller
 	  else
 	  {
 	     $fecha = date("H:i",strtotime("-".((int)$h - 30). "minutes".' +1 hour', $hr_mx));
-	   }
+	   }*/
 	  
-	   $hora = DB::table('horas')
-                    ->where('hora','LIKE',$fecha."%")
-                    ->first();
+      $time = time();   
+      $hora =date("H:i:s", $time);
+        //echo '..........................'.$nuevo;
+	   /*$hora = DB::table('horas')
+                    ->where('hora','LIKE',$nuevo."%")
+                    ->first();*/
         return $hora;
     }
 
     private function getProgram($id)
     {
     	$programa = DB::table('programas')
-                    ->where('id_programa',$id)
+                    ->where('id',$id)
                     ->first();
 
         return $programa;
@@ -146,7 +149,7 @@ class SheduleController extends Controller
     private function recentProgram()
     {
     	
-    	return  $this->getProgram($this->getHorario($this->getHora()->id_hora)->id_programa);
+    	return  $this->getProgram($this->getHorario($this->getHora())->programa_id);
 
     }
 
@@ -157,8 +160,8 @@ class SheduleController extends Controller
     	foreach ($horarios as $i => $horario)
         {
        	      //var_dump($horario->id_programa);
-              $programa = $this->getProgram($horario->id_programa);
-               $programa->horario = $this->getHoraProgram($horario-> id_hora_inicio)->hora;
+              $programa = $this->getProgram($horario->programa_id);
+               $programa->horario = $horario->hora_inicio;
               if (!array_key_exists($programa->id_programa, $programs)){
               	$programs[] = $programa; 
               }                       	
@@ -178,10 +181,11 @@ class SheduleController extends Controller
             {
                 $i = 1;
             }
-            if($horarios[$i]->id_programa != $horarios[$i-1]->id_programa)
+            if($horarios[$i]->programa_id != $horarios[$i-1]->programa_id)
             {
-              $programa = $this->getProgram($horario->id_programa);
-              $programa->horario = $this->getHoraProgram($horario-> id_hora_inicio)->hora;
+              $programa = $this->getProgram($horario->programa_id);
+              ////////////////////  
+              $programa->horario = $horario->hora_inicio ;// $this->getHoraProgram($horario->id_hora_inicio)->hora;
              
               $programas[$i] = $programa;     
             }
@@ -200,18 +204,20 @@ class SheduleController extends Controller
             {
                 $i = 1;
             }
-            if($horarios[$i]->id_programa != $horarios[$i-1]->id_programa)
+            if($horarios[$i]->programa_id != $horarios[$i-1]->programa_id)
             {
-              $hora = $this->getHoraProgram($horario->id_hora_inicio);
-              $horas[$i] = $hora;     
+              $hora = $horario->hora_inicio;//$this->getHoraProgram($horario->hora_inicio);
+              $horas[$i] = $hora;
             }
             
         }
 
         return $horas;
 
-      }
+    }
 
+    //no se usa
+    /*
     private function getHoraProgram($hora)
     {
        $hora = DB::table('horas')
@@ -220,15 +226,12 @@ class SheduleController extends Controller
 
         return $hora;
 
-    }
+    }*/
 
     private function getHorariosDia($dia)
-    {
-      
-
+    {    
       $horarios = DB::table('horarios')
-                    ->where('id_dia', $dia)
-                    ->where('id_hora_inicio','>=',1)
+                    ->where('dia_id', $dia)                    
                     ->get();
 
        return $horarios;    
@@ -237,7 +240,7 @@ class SheduleController extends Controller
     private function getAllPrograms()
     {
     $programas = DB::table('programas')
-    		     ->select('id_programa', 'nombre')
+    		     ->select('id', 'nombre')
     		     ->get();
 
         return $programas;
@@ -246,22 +249,24 @@ class SheduleController extends Controller
     private function getProgramSchedulle($program,$day)
     {
     	$horarios = DB::table('horarios')
-    		    ->where('id_programa',$program)
-    		    ->where('id_dia', $day)
-    		    ->select('descripcion','id_hora_inicio')
+    		    ->where('programa_id',$program)
+    		    ->where('dia_id', $day)
+    		    ->select('tipo','hora_inicio')
                     ->get();
 
        return $horarios;    
     }
 
-   private function getTimeProgram($id_hora)
-   {
-    $time = DB::table('horas')
+    ////////////////////////////////////////////////////////////no se puede usar este
+    /*private function getTimeProgram($id_hora)
+    {
+        $time = DB::table('horas')
     		->where('id_hora',$id_hora)
     		->first();
     return $time;
-    }
+    }*/
 
+    //////////////////////////////////////////////////////////////// no se que onda
     private function getProgramService($program,$day)
     {
     $schedulle = $this->getProgramSchedulle($program,$day);
@@ -269,9 +274,10 @@ class SheduleController extends Controller
     
     foreach ($schedulle as $i => $s)
         {           
-            $time = $this->getTimeProgram($s->id_hora_inicio);
-            $programSchedulle[$i] = array("descripcion" => $s->descripcion,
-            				      "time" => $time->hora
+            //$time = $this->getTimeProgram($s->id_hora_inicio);
+            $time = $s->hora_inicio;
+            $programSchedulle[$i] = array("tipo" => $s->tipo,
+            				      "time" => $time
             					);            
         }                   
     	return $programSchedulle;     
@@ -281,9 +287,9 @@ class SheduleController extends Controller
     {
     	$programs = DB::table('horarios')
     		    ->where('id_dia', $dia)
-    		    ->join('programas', 'programas.id_programa', '=', 'horarios.id_programa')
+    		    ->join('programas', 'programas.id', '=', 'horarios.programa_id')
     		    ->distinct()
-    		    ->get(array('programas.id_programa', 'programas.nombre'));
+    		    ->get(array('programas.programa_id', 'programas.nombre'));
                     
                     
        return $programs;
@@ -292,20 +298,13 @@ class SheduleController extends Controller
 
     private function GetHoraiosByProgrma($id)
         {
-    	$horarios = DB::table('horarios')
-    		    ->join('horas', function($join) {
-    		    $join->on('horarios.id_hora_inicio','=','horas.id_hora');
-    		    
-    		    })
-    		    ->where('horarios.id_programa', '=',$id )
-    		    ->select("horarios.id_dia", "horas.hora", "horarios.descripcion")
+    	$horarios = DB::table('horarios')    		    
+    		    ->select("dia_id", "hora_inicio","hora_termino" , "tipo")
+                ->where('horarios.programa_id', '=',$id )
     		    //->groupBy('horarios.id_dia')
-    		    ->orderBy('horarios.id_dia', 'asc')
+    		    ->orderBy('horarios.dia_id', 'asc')
     		    ->get();
     return $horarios;
     }
-    
-
-
 
 }

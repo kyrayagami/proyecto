@@ -7,7 +7,8 @@
     <div>
       <a href="{{route('admin.horarios.create')}}" class="btn btn-info">Agregar nuevo Horario </a>
       <a href="{{route('admin.impresion.index')}}" class="btn btn-info">Imprimir Horario </a>   
-      <a href="{{route('admin.horario_pdf.index')}}" class="btn btn-info">Vista de Horario </a>
+      <!--
+      <a href="{{route('admin.horario_pdf.index')}}" class="btn btn-info">Vista de Horario </a>-->
     </div>
   </div>        
   <div class="col-xs-12"> 

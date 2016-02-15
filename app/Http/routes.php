@@ -10,14 +10,6 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/admin', function () {
-    return view('welcome');
-});
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -34,7 +26,20 @@ Route::group(['middleware' => ['web']], function () {
 });
 
 // rutas para el panel de administracion
-Route::group(['prefix'=> 'admin','middleware' => 'web'], function(){
+
+Route::get('/', function () {
+    return view('validacion');
+});
+
+/*Route::get('/admin', function () {
+    return view('welcome');
+});*/
+
+Route::group(['prefix'=> 'admin','middleware' => 'admin:123456'], function(){
+
+Route::get('/', function () {
+    return view('welcome');
+});
 	Route::resource('categorias', 'CategoriasController');
 	Route::get('categorias/{id}/destroy',[
 		'uses' 	=> 'CategoriasController@destroy',
