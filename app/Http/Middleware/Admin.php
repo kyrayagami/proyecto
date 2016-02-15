@@ -17,7 +17,7 @@ class Admin
     {
         //dd('este servira para validar el token---'.$request);
 
-        if( $llave_token == '123456' ){
+        if( $llave_token == 'A7R6I2Z5O9N7A1'){
             return $next($request);
         }
         return redirect('/');
