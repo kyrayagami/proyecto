@@ -19,17 +19,13 @@ class ParrillaController extends Controller
     {
         if($dia!='0')
         {
-            $L= Horario::orderBy('hora_inicio','ASC')->where('dia_id',$dia)->get();    
-
-            //dd('entro al uno dia es = '.$dia);
+            $L= Horario::orderBy('hora_inicio','ASC')->where('dia_id',$dia)->get();                
         } 
         else{
             //$dia = date('w');
             if($dia=='0')
                 $dia=7;
-            $L= Horario::orderBy('hora_inicio','ASC')->where('dia_id','=',$dia)->get();   
-            //$dia = 0; 
-            //dd('entro al dos');
+            $L= Horario::orderBy('hora_inicio','ASC')->where('dia_id','=',$dia)->get();                       
         }
             switch($dia) {
             case 7: $dia = "Domingo";
@@ -46,11 +42,7 @@ class ParrillaController extends Controller
             break;
             case 6: $dia = "Sabado";
             break;
-            }                   
-        //dd($horarios->count());    
-        return view('admin.parrilla.index')->with('L',$L)->with('dia',$dia);
-          
+            }                           
+        return view('admin.parrilla.index')->with('L',$L)->with('dia',$dia);          
     }
-
-
 }

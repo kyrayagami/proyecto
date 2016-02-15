@@ -13,9 +13,9 @@ use DB;
 
 class CategoriasController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-    	$categorias = Categoria::orderBy('id', 'DESC')->paginate(5);
+    	$categorias = Categoria::search($request->nombre)->orderBy('id', 'DESC')->paginate(5);
     	return view('admin.categorias.index')->with('categorias', $categorias);
     }
     public function create()

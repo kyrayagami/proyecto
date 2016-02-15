@@ -35,7 +35,7 @@ Route::get('/', function () {
     return view('welcome');
 });*/
 
-Route::group(['prefix'=> 'admin','middleware' => 'admin:123456'], function(){
+Route::group(['prefix'=> 'admin','middleware' => ['web', 'admin:123456']], function(){
 
 Route::get('/', function () {
     return view('welcome');
@@ -72,14 +72,6 @@ Route::get('/', function () {
 		]);
 	Route::resource('horario_pdf', 'HorarioPDFController');
 
-	Route::resource('parrilla', 'ParrillaController');
-	Route::resource('lunes', 'LunesController');
-	Route::resource('martes', 'MartesController');
-	Route::resource('miercoles', 'MiercolesController');
-	Route::resource('jueves', 'JuevesController');
-	Route::resource('viernes', 'ViernesController');
-	Route::resource('sabado', 'SabadoController');
-	Route::resource('domingo', 'DomingoController');
-	//Route::get('parrilla', 'ParrillaController');	
+	Route::resource('parrilla', 'ParrillaController');	
 	Route::resource('impresion', 'ImpresionController');
 });

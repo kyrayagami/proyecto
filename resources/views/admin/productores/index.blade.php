@@ -3,7 +3,7 @@
 @section('title', 'Productores')
 
 @section('content')
-  <div class="col-xs-9">
+  <div class="col-xs-12">
     <div>
       <a href="{{ route('admin.productores.create')}}" class="btn btn-success">Agregar nuevo Productor</a>
       <!-- Buscador-->

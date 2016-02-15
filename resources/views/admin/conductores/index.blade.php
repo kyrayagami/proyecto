@@ -5,7 +5,7 @@
 @section('content')
 
                                
-  <div class="col-xs-9">
+  <div class="col-xs-12">
     <div>
       <a href="{{ route ('admin.conductores.create')}}" class="btn btn-info">Agregar nuevo Conductor </a>
       <!-- Buscador-->

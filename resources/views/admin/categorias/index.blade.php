@@ -3,9 +3,17 @@
 @section('title', 'Categorias')
 
 @section('content')                                
-    <div class="col-xs-9">
+    <div class="col-xs-12">
       <div>          
           <a href="{{ route('admin.categorias.create')}}" class="btn btn-primary"> Agregar nueva categoria</a>
+          <!-- Buscador-->
+          {!! Form::open(['route' => 'admin.categorias.index', 'method'=>'GET','class' => 'navbar-form pull-right'])!!}
+          <div class="input-group">
+          {!!Form::text('nombre',null,['class'=> 'form-control','placeholder'=> 'Buscar categorias...','aria-describedby'=>'search'])!!}
+            <span class="input-group-addon" id="search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>      
+          </div>      
+          {!! Form::close()!!}
+        <!-- Fin del buscador-->
       </div>
     </div>        
     <div class="col-xs-12"> 
