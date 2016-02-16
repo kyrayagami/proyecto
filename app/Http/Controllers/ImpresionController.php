@@ -25,8 +25,8 @@ class ImpresionController extends Controller
     {
         $horarios= Horario::orderBy('hora_inicio','ASC')->orderBy('dia_id','ASC')->get();
         $filas='';
-        $contenido='<html><style>table {font-size: 13;} td,tr{ border: 1px solid black;} td {padding: 0px;margin: 0px; }</style>
-        <table id="thorario" style="width:100% height:100%">          
+        $contenido='<html><style>table {font-size: 30;}  td{ height: 30;}</style>
+        <table id="thorario" style="width:100% height:100%" cellpadding="0" cellspacing="0" border="1">          
           <thead>
             <tr>
               <th>Hora</th>
@@ -50,7 +50,7 @@ class ImpresionController extends Controller
             $filas=1;
             $tipo="";
             $tipo_hora="am";
-            $contenido.='<tr> <td rowspan="2" align="center"> 12:00 am</td>';
+            $contenido.='<tr> <td rowspan="2" align="center" height="50"> 12:00 am</td>';
               foreach ($horarios as $horario){              
                 $h_ini=str_replace(":","",$horario->hora_inicio);
                 $h_end=str_replace(":","",$horario->hora_termino);
@@ -80,7 +80,7 @@ class ImpresionController extends Controller
                   }
                   if($hora>12)
                     $hora=1;                  
-                  $contenido.= '</tr> <tr> <td rowspan="2" align="center"> '.$hora.':00 '.$tipo_hora.'</td>';
+                  $contenido.= '</tr> <tr> <td rowspan="2" align="center" height="50"> '.$hora.':00 '.$tipo_hora.'</td>';
                   $filas=1; $dia=1;
                   $inicio=$inicio+10000;
                   $termino=$inicio+10000;
@@ -106,7 +106,7 @@ class ImpresionController extends Controller
         //$this->pdf->setPaper('A4','landscape');
         $this->pdf->load($html);
         $this->pdf->filename('Horarios_Canal_10.pdf');
-        $this->pdf->setPaper('A2','landscape');
+        $this->pdf->setPaper('A0','landscape');
         return $this->pdf->show(); // 顯示
         //return $this->pdf->download(); // 下載
         //return $this->pdf->load($html)->show();

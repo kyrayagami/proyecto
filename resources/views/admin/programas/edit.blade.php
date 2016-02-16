@@ -23,6 +23,10 @@
                     {!! Form::text('descripcion_breve',$programa->descripcion_breve,['class' => 'form-control','placeholder'=> 'Descripcion Breve'])!!}
                   </div>      
                   <div class="form-group">
+                    {!! Form::label('logo','Logo de Programa')!!}
+                    {!! Form::text('logo',$programa->logo,['class' => 'form-control','placeholder' => 'http://res.cloudinary.com/ejemplo.jpg ','required'])  !!}
+                  </div>
+                  <div class="form-group">
                     {!! Form::label('img_programa','Imagen Programa')!!}
                     {!! Form::text('img_programa',$programa->img_programa,['class' => 'form-control','placeholder' => 'http://res.cloudinary.com/ejemplo.jpg ','required'])  !!}
                   </div>
