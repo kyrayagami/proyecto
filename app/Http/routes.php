@@ -21,25 +21,29 @@
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
-    //
+Route::group(['middleware' => ['admin:A7R6I2Z5O9N7A1']], function () {
+  	Route::get('/', function () {
+    	return view('welcome');
+	});
 });
 
 // rutas para el panel de administracion
 
+/*
 Route::get('/', function () {
     return view('validacion');
-});
-
-/*Route::get('/admin', function () {
-    return view('welcome');
 });*/
-
-Route::group(['prefix'=> 'admin','middleware' => ['web', 'admin:A7R6I2Z5O9N7A1']], function(){
-
+/*
 Route::get('/', function () {
     return view('welcome');
+});*/  
+Route::get('/error',function(){
+	return view('errors.503');
 });
+Route::group(['prefix'=> 'admin',['middleware' => 'web','admin:A7R6I2Z5O9N7A1']], function(){
+	  Route::get('/', function () {
+    	return view('welcome');
+	});
 	Route::resource('categorias', 'CategoriasController');
 	Route::get('categorias/{id}/destroy',[
 		'uses' 	=> 'CategoriasController@destroy',
