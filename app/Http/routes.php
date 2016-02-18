@@ -40,7 +40,7 @@ Route::get('/', function () {
 Route::get('/error',function(){
 	return view('errors.503');
 });
-Route::group(['prefix'=> 'admin',['middleware' => 'web','admin:A7R6I2Z5O9N7A1']], function(){
+Route::group(['prefix'=> 'admin','middleware' => ['web','admin:A7R6I2Z5O9N7A1']], function(){
 	  Route::get('/', function () {
     	return view('welcome');
 	});
