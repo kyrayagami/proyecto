@@ -25,3 +25,6 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ### License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+
+
+Este es el sistema de horarios el cual esta creado con laravel 5.1 y se requiere php 5.5.9 min para correr el proyecto
