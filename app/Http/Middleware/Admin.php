@@ -14,10 +14,10 @@ class Admin
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next,$llave_token)
+    public function handle($request, Closure $next)
     {
         //dd('este servira para validar el token---'.$request);
-        //$llave_token = Route::input('token');
+        $llave_token = Route::input('token');
         if( $llave_token == 'A7R6I2Z5O9N7A1'){
             return $next($request);
         }
